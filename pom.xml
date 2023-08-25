@@ -4,9 +4,18 @@
   <groupId>com.systechafrica</groupId>
   <artifactId>java-se-training</artifactId>
   <packaging>jar</packaging>
+
   <version>1.0-SNAPSHOT</version>
   <name>java-se-training</name>
   <url>http://maven.apache.org</url>
+
+
+<properties>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+  </properties>
+  
   <dependencies>
     <!-- https://mvnrepository.com/artifact/org.junit.jupiter/junit-jupiter-api -->
 <dependency>
