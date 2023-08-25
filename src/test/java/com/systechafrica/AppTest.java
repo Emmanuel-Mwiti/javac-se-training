@@ -1,38 +1,23 @@
 package com.systechafrica;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestInstance;
+@TestInstance(TestInstance.Lifecycle.PER_CLASS) //? default instance 
+public class AppTest {
 
-/**
- * Unit test for simple App.
- */
-public class AppTest 
-    extends TestCase
-{
-    /**
-     * Create the test case
-     *
-     * @param testName name of the test case
-     */
-    public AppTest( String testName )
-    {
-        super( testName );
+    //? Reference => App
+    App app = new App();
+
+    @Test
+    void add(){
+        //when 
+        int result = app.add(2, 3);
+        //then
+        int expected = 5;
+        //verify that result = expected
+        Assertions.assertEquals(expected, result, " the sum of 2 + 3 should be 5");
+
     }
 
-    /**
-     * @return the suite of tests being tested
-     */
-    public static Test suite()
-    {
-        return new TestSuite( AppTest.class );
-    }
-
-    /**
-     * Rigourous Test :-)
-     */
-    public void testApp()
-    {
-        assertTrue( true );
-    }
 }
