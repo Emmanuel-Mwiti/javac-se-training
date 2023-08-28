@@ -33,20 +33,45 @@ package com.systechafrica.looping;
       int myNumber = 0;
       int count = 0;
 
-      do{
+      do {
         LOGGER.info("My number is equal to: " + myNumber);
         myNumber++;
         count++;
-      }
-      while (myNumber < 10);
-        LOGGER.info("Count is equal to: " + count);
+      } while (myNumber < 10);
+      LOGGER.info("Count is equal to: " + count);
+
+    }
+
+    public void breakJumpStatements() {
+        LOGGER.info("before my loop ");
+        for (int index = 0; index < 10; index++) {
+            if (index == 5) {
+                break;
+            }
+            LOGGER.info("my index is: " + index);
+        }
+        LOGGER.info("after my loop ");
+    }
+    
+    public void continueJumpStatements() {
+        LOGGER.info("before my loop ");
+        for (int index = 0; index < 10; index++) {
+            if (index == 5) {
+                continue;
+            }
+            LOGGER.info("my index is: " + index);
+        }
+        LOGGER.info("after my loop ");
 
     }
 
     public static void main(String[] args) {
       LoopingStatements app = new LoopingStatements();
       // app.forLoop();
-      app.whileLoop();
-      app.doWhileLoop();
+      // app.whileLoop();
+      // app.doWhileLoop();
+      // app.breakJumpStatements();
+      app.continueJumpStatements();
+
     }
   }

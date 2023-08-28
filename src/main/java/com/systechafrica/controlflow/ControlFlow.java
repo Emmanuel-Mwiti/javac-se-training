@@ -67,8 +67,6 @@ public class ControlFlow {
         ControlFlow app = new ControlFlow();
        app.ifelseStatement();
        // app.switchStatement();
-    //    app.While();
-        // app.doWhile();
 
     }
 }
