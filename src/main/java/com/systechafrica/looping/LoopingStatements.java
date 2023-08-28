@@ -54,10 +54,21 @@ package com.systechafrica.looping;
     }
     
     public void continueJumpStatements() {
+      LOGGER.info("before my loop ");
+      for (int index = 0; index < 10; index++) {
+        if (index == 5) {
+          continue;
+        }
+        LOGGER.info("my index is: " + index);
+      }
+      LOGGER.info("after my loop ");
+
+    }
+    public void returnJumpStatements() {
         LOGGER.info("before my loop ");
         for (int index = 0; index < 10; index++) {
-            if (index == 5) {
-                continue;
+            if (index == 4) {
+                return;
             }
             LOGGER.info("my index is: " + index);
         }
@@ -65,13 +76,15 @@ package com.systechafrica.looping;
 
     }
 
+
     public static void main(String[] args) {
       LoopingStatements app = new LoopingStatements();
       // app.forLoop();
       // app.whileLoop();
       // app.doWhileLoop();
       // app.breakJumpStatements();
-      app.continueJumpStatements();
+      // app.continueJumpStatements();
+      app.returnJumpStatements();
 
     }
   }
