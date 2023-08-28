@@ -8,6 +8,6 @@ public class App
     }
 
     public int add(int x, int y) {
-        return x;
+        return x+y;
     }
 }
