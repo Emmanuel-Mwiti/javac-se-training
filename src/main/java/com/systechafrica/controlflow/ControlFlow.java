@@ -33,9 +33,10 @@ public class ControlFlow {
           LOGGER.info("Student grade: "+grade);
         }
     }
-    public void switchStatement(){
+
+    public void switchStatement() {
         String day = "Unknown";
-        switch(day){
+        switch (day) {
             case "MONDAY":
                 LOGGER.info("Monday working day");
                 break;
@@ -54,14 +55,33 @@ public class ControlFlow {
             case "SATURDAY":
             case "SUNDAY":
                 LOGGER.info("Sherehe");
-                break;          
+                break;
             default:
                 LOGGER.info("Please specify a valid day");
 
         }
 
+    }
 
-
+    public void While() {
+        int studentCount = 0;
+        int count = 0;
+        while (studentCount < 10) {
+            LOGGER.info("Sudent count is: " + studentCount);
+            studentCount++;
+            count++;
+        }
+    }
+    
+    public void doWhile() {
+        int myNumber = 0;
+        int count = 0;
+        do {
+            LOGGER.info("My number is"+myNumber);
+            myNumber++;
+            count++;
+        }
+        while (myNumber < 10);
     }
     public static void main(String[] args) {
         ControlFlow app = new ControlFlow();
