@@ -63,30 +63,12 @@ public class ControlFlow {
 
     }
 
-    public void While() {
-        int studentCount = 0;
-        int count = 0;
-        while (studentCount < 10) {
-            LOGGER.info("Sudent count is: " + studentCount);
-            studentCount++;
-            count++;
-        }
-    }
-    
-    public void doWhile() {
-        int myNumber = 0;
-        int count = 0;
-        do {
-            LOGGER.info("My number is"+myNumber);
-            myNumber++;
-            count++;
-        }
-        while (myNumber < 10);
-    }
     public static void main(String[] args) {
         ControlFlow app = new ControlFlow();
        app.ifelseStatement();
-        // app.switchStatement();
+       // app.switchStatement();
+    //    app.While();
+        // app.doWhile();
 
     }
 }

@@ -20,10 +20,26 @@ package com.systechafrica.looping;
 
     public void whileLoop() {
       int studentCount = 0;
+      int count = 0;
       while (studentCount < 10) {
         LOGGER.info("Student Count = " + studentCount);
         studentCount++; // studentCount = studentCount + 1
+        count++;
       }
+
+    }
+
+    public void doWhileLoop() {
+      int myNumber = 0;
+      int count = 0;
+
+      do{
+        LOGGER.info("My number is equal to: " + myNumber);
+        myNumber++;
+        count++;
+      }
+      while (myNumber < 10);
+        LOGGER.info("Count is equal to: " + count);
 
     }
 
@@ -31,5 +47,6 @@ package com.systechafrica.looping;
       LoopingStatements app = new LoopingStatements();
       // app.forLoop();
       app.whileLoop();
+      app.doWhileLoop();
     }
   }
