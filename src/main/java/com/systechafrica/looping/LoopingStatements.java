@@ -64,16 +64,27 @@ package com.systechafrica.looping;
       LOGGER.info("after my loop ");
 
     }
-    public void returnJumpStatements() {
-        LOGGER.info("before my loop ");
-        for (int index = 0; index < 10; index++) {
-            if (index == 4) {
-                return;
-            }
-            LOGGER.info("my index is: " + index);
-        }
-        LOGGER.info("after my loop ");
 
+    public void returnJumpStatements() {
+      LOGGER.info("before my loop ");
+      for (int index = 0; index < 10; index++) {
+        if (index == 4) {
+          return;
+        }
+        LOGGER.info("my index is: " + index);
+      }
+      LOGGER.info("after my loop ");
+
+    }
+    
+    //Here is an example testing for the loops, test file in loops/LoopingStatementsTest.java
+    public int search(int numberToSearch){
+        for (int index = 1; index <= 50; index++) {
+            if(index == numberToSearch){
+                return index;
+            }
+        }
+        return 0;
     }
 
 
