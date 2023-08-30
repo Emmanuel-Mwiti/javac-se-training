@@ -112,8 +112,8 @@ public class ATM_machine {
           System.out.print("Invalid option. Please enter a valid option! ");
           break;
       }
+          scanner.close();
     }
-    scanner.close();
 
 
       
