@@ -1,4 +1,4 @@
-package com.systechafrica.arrays.atmMachine;
+package com.systechafrica.atmMachine;
 
 import java.util.Scanner;
 
@@ -15,7 +15,7 @@ public class ATM_machine {
     final String USER_NAME = "Emmanuel";
     final String USER_PASSOWRD = "Admin123";
 
-    System.out.println("Welcome to ATM Machine. Please enter the name and passoword to login.");
+    System.out.println("Welcome to ATM Machine. Please enter the name and password to login.");
     Scanner scanner = new Scanner(System.in);
     System.out.print("Name:");
     String username = scanner.nextLine();
