@@ -98,6 +98,7 @@ public class ATM_machine {
         break;
       case 4:
       case 5:
+      System.exit(0);
         break;
       default:
         System.out.print("Invalid option. Please enter a valid option! ");
