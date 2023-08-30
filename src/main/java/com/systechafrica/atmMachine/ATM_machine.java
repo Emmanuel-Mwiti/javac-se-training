@@ -65,7 +65,7 @@ public class ATM_machine {
 
     while (true) {
 
-      System.out.println("***************");
+      System.out.println("\n***************");
       System.out.println("ATM SIMULATOR");
       System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
       System.out.println("ATM SERVICES\n");
@@ -95,7 +95,7 @@ public class ATM_machine {
           double amountToWithdraw = scanner.nextDouble();
           //calculate withdraw charges for the inputted amount given the formulae
           double withdrawCharges = amountToWithdraw * 0.02;
-          // Then, check if the withdraw charges plus the withdraw amount is greater than accountBalance, gives insufficient balance
+          // Then, check if the withdraw charges plus the withdraw amount is less than accountBalance, gives insufficient balance
           if (amountToWithdraw + withdrawCharges < accountBalance) {
             accountBalance -= (amountToWithdraw + withdrawCharges);
             System.out.print(
@@ -106,6 +106,8 @@ public class ATM_machine {
           }
           break;
         case 4:
+          System.out.print("Transfer option not available at the moment!! ");
+          break;
         case 5:
           scanner.close();
           return;
