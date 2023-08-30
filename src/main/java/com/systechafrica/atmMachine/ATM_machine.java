@@ -96,15 +96,14 @@ public class ATM_machine {
           //calculate withdraw charges for the inputted amount given the formulae
           double withdrawCharges = amountToWithdraw * 0.02;
           // Then, check if the withdraw charges plus the withdraw amount is greater than accountBalance, gives insufficient balance
-          if (amountToWithdraw + withdrawCharges > accountBalance) {
-            System.out.print("You have insufficient funds. Your balance is ksh. " + accountBalance);
-          } else {
+          if (amountToWithdraw + withdrawCharges < accountBalance) {
             accountBalance -= (amountToWithdraw + withdrawCharges);
             System.out.print(
                 "You have successify withdrawn ksh. " + amountToWithdraw +
                     ". New Balance is ksh. " + accountBalance);
+          } else {
+            System.out.print("You have insufficient funds. Your balance is ksh. " + accountBalance);
           }
-
           break;
         case 4:
         case 5:
