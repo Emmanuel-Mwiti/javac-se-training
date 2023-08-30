@@ -49,7 +49,7 @@ public class ATM_machine {
 
       //check if the password and user name are equal to what is provided
       if (username.equals(USER_NAME) && userPassword.equals(USER_PASSOWRD)) {
-        
+
         System.out.println("Login successiful");
         break; //when return true, it exists the control and goes to the next execution
       } else {
@@ -65,56 +65,55 @@ public class ATM_machine {
     while (true) {
 
       System.out.println("***************");
-        System.out.println("ATM SIMULATOR");
-        System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
-        System.out.println("ATM SERVICES\n");
-        System.out.println("__________________");
-        System.out.println("1. Check Balance");
-        System.out.println("2. Deposit");
-        System.out.println("3. Withdraw");
-        System.out.println("4. Transfer Cash");
-        System.out.println("5. Quit");
-        System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
-      
-     System.out.println("Please choose an option from the above options");
-     int option_choosen = scanner.nextInt();
+      System.out.println("ATM SIMULATOR");
+      System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
+      System.out.println("ATM SERVICES\n");
+      System.out.println("__________________");
+      System.out.println("1. Check Balance");
+      System.out.println("2. Deposit");
+      System.out.println("3. Withdraw");
+      System.out.println("4. Transfer Cash");
+      System.out.println("5. Quit");
+      System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
 
-    switch (option_choosen) {
-      case 1:
-        System.out.println("Your account balance is ksh. " + accountBalance);
-        break;
-      case 2:
-        System.out.print("Enter the amount you want to deposit ");
-        double amountToDeposit = scanner.nextDouble();
-        accountBalance+=amountToDeposit;
-        System.out.print("Your new account balance is ksh. "+accountBalance);
-        break;
-      case 3:
-        System.out.print("Enter the amount you want to withdraw ");
-        double amountToWithdraw = scanner.nextDouble();
-        //calculate withdraw charges for the inputted amount given the formulae
-        double withdrawCharges = amountToWithdraw * 0.02;
-        // Then, check if the withdraw charges plus the withdraw amount is greater than accountBalance, gives insufficient balance
-        if (amountToWithdraw + withdrawCharges > accountBalance) {
-          System.out.print("You have insufficient funds. Your balance is ksh. " + accountBalance);
-        }
-        else {
-          accountBalance -= (amountToWithdraw + withdrawCharges);
-          System.out.print(
-            "You have successify withdrawn ksh. " + amountToWithdraw +
-            ". New Balance is ksh. " + accountBalance
-            );
-        }
-        
-        break;
-      case 4:
-      case 5:
-      return;
-      default:
-        System.out.print("Invalid option. Please enter a valid option! ");
-        break;
+      System.out.println("Please choose an option from the above options");
+      int option_choosen = scanner.nextInt();
+
+      switch (option_choosen) {
+        case 1:
+          System.out.println("Your account balance is ksh. " + accountBalance);
+          break;
+        case 2:
+          System.out.print("Enter the amount you want to deposit ");
+          double amountToDeposit = scanner.nextDouble();
+          accountBalance += amountToDeposit;
+          System.out.print("Your new account balance is ksh. " + accountBalance);
+          break;
+        case 3:
+          System.out.print("Enter the amount you want to withdraw ");
+          double amountToWithdraw = scanner.nextDouble();
+          //calculate withdraw charges for the inputted amount given the formulae
+          double withdrawCharges = amountToWithdraw * 0.02;
+          // Then, check if the withdraw charges plus the withdraw amount is greater than accountBalance, gives insufficient balance
+          if (amountToWithdraw + withdrawCharges > accountBalance) {
+            System.out.print("You have insufficient funds. Your balance is ksh. " + accountBalance);
+          } else {
+            accountBalance -= (amountToWithdraw + withdrawCharges);
+            System.out.print(
+                "You have successify withdrawn ksh. " + amountToWithdraw +
+                    ". New Balance is ksh. " + accountBalance);
+          }
+
+          break;
+        case 4:
+        case 5:
+          return;
+        default:
+          System.out.print("Invalid option. Please enter a valid option! ");
+          break;
+      }
     }
-    }
+    scanner.close();
 
 
       
