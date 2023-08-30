@@ -19,6 +19,7 @@ public class ATM_machine {
             // iv.) transfer and print receipt
   // While working here, i realized i should have globally created scanner object, small modifications.
   // The use switch control to define the above ATM menu.
+  //  5. Now after all the logistics, the system should not be existing after each option, it should be taking us to the main menu.So, i will encompass the whole ATM menu under true evaluation such that it evaluates true. Also, it should reload the main option, therefore, i will remove it from the place of checking user and password to the first welcome message. Few Modifications also to only print login successiful once.
 
 
     final String USER_NAME = "Emmanuel";
@@ -39,7 +40,20 @@ public class ATM_machine {
       String userPassword = scanner.nextLine();
       //check if the password and user name are equal to what is provided
       if (username.equals(USER_NAME) && userPassword.equals(USER_PASSOWRD)) {
-        System.out.println("***************");
+        System.out.println("Login successiful");
+        break; //when return true, it exists the control and goes to the next execution
+      } else {
+        System.out.println("Login was unsuccessful, Either password or username is incorrect. Trry again");
+        loginTrial++;
+      }
+    }
+    if (loginTrial == 3) {
+      System.err.println("You have exhausted your login attempts, the system will now stop!");
+    }
+
+    while (true) {
+
+      System.out.println("***************");
         System.out.println("ATM SIMULATOR");
         System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
         System.out.println("ATM SERVICES\n");
@@ -50,17 +64,9 @@ public class ATM_machine {
         System.out.println("4. Transfer Cash");
         System.out.println("5. Quit");
         System.out.println("\"\"\"\"\"\"\"\"\"\"\"\"\"\"\"");
-        break; //when return true, it exists the control and goes to the next execution
-      } else {
-        System.out.println("Login was unsuccessful, Either password or username is incorrect. Trry again");
-        loginTrial++;
-      }
-    }
-    if (loginTrial == 3) {
-      System.err.println("You have exhausted your login attempts, the system will now stop!");
-    }
-    System.out.println("Successiful login. Please choose an option from the above options");
-    int option_choosen = scanner.nextInt();
+      
+     System.out.println("Please choose an option from the above options");
+     int option_choosen = scanner.nextInt();
 
     switch (option_choosen) {
       case 1:
@@ -96,6 +102,7 @@ public class ATM_machine {
       default:
         System.out.print("Invalid option. Please enter a valid option! ");
         break;
+    }
     }
 
 
