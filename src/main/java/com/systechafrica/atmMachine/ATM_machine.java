@@ -59,6 +59,7 @@ public class ATM_machine {
     }
     if (loginTrial == 3) {
       System.err.println("You have exhausted your login attempts, the system will now stop!");
+      scanner.close();
       return;
     }
 
@@ -107,12 +108,12 @@ public class ATM_machine {
           break;
         case 4:
         case 5:
+          scanner.close();
           return;
         default:
           System.out.print("Invalid option. Please enter a valid option! ");
           break;
       }
-          scanner.close();
     }
 
 
