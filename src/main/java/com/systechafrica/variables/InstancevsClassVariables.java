@@ -1,6 +1,6 @@
 package com.systechafrica.variables;
 
-public class InstanceVsClassVariables {
+public class InstancevsClassVariables {
 
     static String message = "Hello, World!";
     String message2 = "Hello, World!";
