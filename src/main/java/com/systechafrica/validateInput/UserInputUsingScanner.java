@@ -1,7 +1,9 @@
-package com.systechafrica.variables.userInput;
+package com.systechafrica.validateInput;
 
 import java.util.Scanner;
 import java.util.logging.Logger;
+
+import com.systechafrica.utils.ValidateInput;
 
 public class UserInputUsingScanner {
     private static final Logger LOGGER = Logger.getLogger(UserInputUsingScanner.class.getName());
@@ -19,13 +21,17 @@ public class UserInputUsingScanner {
         System.out.print("Enter your password: ");
         String password = scanner.nextLine();
 
-        if ( username.equals(DB_USERNAME) && password.equals(DB_PASSWORD)){
+        if (ValidateInput.validate(password) && ValidateInput.validate(username)) {
+          if ( username.equals(DB_USERNAME) && password.equals(DB_PASSWORD)){
             System.out.println("Welcome to our website");
         }
         else{
             System.err.println("Incorrect username or password");
         }
 
+        }
+
+        
         scanner.close();
 
 
