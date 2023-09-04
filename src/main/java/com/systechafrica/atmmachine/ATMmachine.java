@@ -26,7 +26,7 @@ public class ATMmachine {
         try {
           System.out.print("Please choose an option: ");
           int optionChoosen = app.scanner.nextInt();
-          if (optionChoosen < 5) {
+          if (optionChoosen <= 5) {
             switch (optionChoosen) {
               case 1:
                 app.checkBalance();
@@ -34,6 +34,10 @@ public class ATMmachine {
                 app.deposit();
               case 3:
                 app.withdraw();
+              case 4:
+                app.transferMoney();
+              case 5:
+                keepShowing = false;
 
             }
           } else {
