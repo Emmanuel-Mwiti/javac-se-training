@@ -9,6 +9,7 @@ public class ATMmachine {
   double accountBalance = INITIAL_AMOUNT;
   final double WITHDRAWAL_CHARGES = 0.02;
   final int LOGIN_TRIALS = 3;
+  final String TRANSFER_TO_NUMBER_FORMAT = "^[0-9]{8,16}$";
 
   Scanner scanner = new Scanner(System.in);
 
@@ -30,14 +31,22 @@ public class ATMmachine {
             switch (optionChoosen) {
               case 1:
                 app.checkBalance();
+                break;
               case 2:
                 app.deposit();
+                break;
               case 3:
                 app.withdraw();
+                break;
               case 4:
                 app.transferMoney();
+                break;
               case 5:
                 keepShowing = false;
+                break;
+              default:
+                System.out.println("Please select an option!");
+                break;
 
             }
           } else {
@@ -130,6 +139,32 @@ public class ATMmachine {
   }
 
   public void transferMoney() {
+
+    System.out.print("Enter number to transfer to: ");
+    String numberToTransferTo = scanner.nextLine();
+    // ?number to transfer to, should be a number Matches any digit (0-9) and should
+    // be between 8 and 16 digits in length
+
+    // if (numberToTransferTo.equals(TRANSFER_TO_NUMBER_FORMAT)) {
+    // ? Ask amount of money to transfer
+    System.out.print("Enter the amount you want to Transfer: ");
+    double amountToTransfer = scanner.nextDouble();
+    if (amountToTransfer > 0) {
+      double totalTransferCharges = amountToTransfer * WITHDRAWAL_CHARGES;
+      if (accountBalance > (totalTransferCharges + amountToTransfer)) {
+        // ?Calculate the remaining account balance
+        accountBalance -= (totalTransferCharges + amountToTransfer);
+        System.out.println("You have successifully transferred sh. " + amountToTransfer + "to account number "
+            + numberToTransferTo + ". Your new account balance is sh. " + accountBalance);
+      } else {
+        System.out.println("Insufficient funds! Your account balance is sh. " + accountBalance);
+      }
+    } else {
+      System.out.println("Please enter a valid amount to transfer! ");
+    }
+    // } else {
+    // System.out.println("Invalid number format! ");
+    // }
 
   }
 
