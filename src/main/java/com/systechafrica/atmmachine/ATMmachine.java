@@ -21,15 +21,25 @@ public class ATMmachine {
       app.displayMenu();
       boolean keepShowing = true;
       while (keepShowing) {
-        System.out.print("Please choose an option: ");
-        int optionChoosen = app.scanner.nextInt();
-        switch (optionChoosen) {
-          case 1:
-            app.checkBalance();
-          case 2:
-            app.deposit();
 
+        // !check if the number entered by the user is an integer
+        try {
+          System.out.print("Please choose an option: ");
+          int optionChoosen = app.scanner.nextInt();
+          switch (optionChoosen) {
+            case 1:
+              app.checkBalance();
+            case 2:
+              app.deposit();
+
+          }
+
+        } catch (Exception e) {
+          app.scanner.nextLine(); // ! this is to clear the \n character that is retained when using scanner with
+                                  // nextInt()
+          System.out.println("Invalid options! Please enter options as 1,2,3,4 or 5!");
         }
+
       }
 
     } else {
