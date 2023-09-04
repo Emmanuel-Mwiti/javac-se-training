@@ -32,6 +32,8 @@ public class ATMmachine {
                 app.checkBalance();
               case 2:
                 app.deposit();
+              case 3:
+                app.withdraw();
 
             }
           } else {
@@ -105,9 +107,18 @@ public class ATMmachine {
   }
 
   public void withdraw() {
+    System.out.print("Enter the amount you want to withdraw: ");
+    double amountToWithdraw = scanner.nextDouble();
     // ?Calculate withdrawal charges
+    double totalWithdrawalCharges = amountToWithdraw * WITHDRAWAL_CHARGES;
     // check withdrawal charges againist the amount in bank
-    //
+    if (accountBalance > (amountToWithdraw + totalWithdrawalCharges)) {
+      accountBalance -= (amountToWithdraw + totalWithdrawalCharges);
+      System.out.println("You have successifully withdrawn sh. " + amountToWithdraw + ". Withdrawal charges is sh. "
+          + totalWithdrawalCharges + ". New balance is sh. " + accountBalance);
+    } else {
+      System.out.println("Insufficient funds! Your balance is sh. : " + accountBalance);
+    }
     // ?withdraw if withdrawal the sum of withdrawal charges and amount to withdraw
     // is less than amount in account
     // ?Return insufficient funds
