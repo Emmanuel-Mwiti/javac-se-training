@@ -26,18 +26,22 @@ public class ATMmachine {
         try {
           System.out.print("Please choose an option: ");
           int optionChoosen = app.scanner.nextInt();
-          switch (optionChoosen) {
-            case 1:
-              app.checkBalance();
-            case 2:
-              app.deposit();
+          if (optionChoosen < 5) {
+            switch (optionChoosen) {
+              case 1:
+                app.checkBalance();
+              case 2:
+                app.deposit();
 
+            }
+          } else {
+            System.out.println("Choose an option between 1 and 5!");
           }
 
         } catch (Exception e) {
           app.scanner.nextLine(); // ! this is to clear the \n character that is retained when using scanner with
                                   // nextInt()
-          System.out.println("Invalid options! Please enter options as 1,2,3,4 or 5!");
+          System.out.println("Invalid options! Please enter a valid option! Only integers are accepted!");
         }
 
       }
@@ -87,6 +91,16 @@ public class ATMmachine {
   }
 
   public void deposit() {
+
+    System.out.print("Enter the amount you want to deposit: ");
+    double amountToDeposit = scanner.nextDouble();
+    if (amountToDeposit < 0) {
+      System.out.println("Please enter a valid amount!: ");
+    } else {
+      accountBalance += amountToDeposit;
+      System.out.println(
+          "You have successifully deposited sh. " + amountToDeposit + ". New balance is sh. " + accountBalance);
+    }
 
   }
 
