@@ -18,10 +18,10 @@ public class ATMmachine {
     boolean loggedIn = app.login();
     if (loggedIn) {
       System.out.println("Successiful login");
-      // display menu
-      app.displayMenu();
       boolean keepShowing = true;
       while (keepShowing) {
+        // display menu
+        app.displayMenu();
 
         // !check if the number entered by the user is an integer
         try {
