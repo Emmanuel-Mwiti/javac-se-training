@@ -17,6 +17,21 @@ public class ATMmachine {
     boolean loggedIn = app.login();
     if (loggedIn) {
       System.out.println("Successiful login");
+      // display menu
+      app.displayMenu();
+      boolean keepShowing = true;
+      while (keepShowing) {
+        System.out.print("Please choose an option: ");
+        int optionChoosen = app.scanner.nextInt();
+        switch (optionChoosen) {
+          case 1:
+            app.checkBalance();
+          case 2:
+            app.deposit();
+
+        }
+      }
+
     } else {
       System.out.println("Maximum attempts reached!");
     }
@@ -44,7 +59,21 @@ public class ATMmachine {
   }
 
   public void displayMenu() {
+    System.out.println("******************************");
+    System.out.println("********ATM SIMULATOR*********");
+    System.out.println("******************************");
+    System.out.println("********ATM SERVICES**********");
+    System.out.println("______________________________");
+    System.out.println("1. Check Balance");
+    System.out.println("2. Deposit");
+    System.out.println("3. Withdraw");
+    System.out.println("4. Transfer Cash");
+    System.out.println("5. Quit");
 
+  }
+
+  public void checkBalance() {
+    System.out.println("Your account balance is: " + accountBalance);
   }
 
   public void deposit() {
