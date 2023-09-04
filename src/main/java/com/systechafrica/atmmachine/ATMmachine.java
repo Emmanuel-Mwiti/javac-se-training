@@ -4,16 +4,16 @@ import java.util.Scanner;
 
 public class ATMmachine {
 
-  final String DEFAULT_PASSWORD = "Admin123";
-  final double INITIAL_AMOUNT = 1000.00;
-  double accountBalance = INITIAL_AMOUNT;
-  final double WITHDRAWAL_CHARGES = 0.02;
-  final int LOGIN_TRIALS = 3;
-  final String TRANSFER_TO_NUMBER_FORMAT = "^[0-9]{8,16}$";
+  private final String DEFAULT_PASSWORD = "Admin123";
+  private final double INITIAL_AMOUNT = 1000.00;
+  private double accountBalance = INITIAL_AMOUNT;
+  private final double WITHDRAWAL_CHARGES = 0.02;
+  // private final int LOGIN_TRIALS = 3;
+  // private final String TRANSFER_TO_NUMBER_FORMAT = "^[0-9]{8,16}$";
 
   Scanner scanner = new Scanner(System.in);
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws InterruptedException {
     ATMmachine app = new ATMmachine();
     boolean loggedIn = app.login();
     if (loggedIn) {
@@ -21,6 +21,8 @@ public class ATMmachine {
       boolean keepShowing = true;
       while (keepShowing) {
         // display menu
+        System.out.println("LOADING...");
+        Thread.sleep(400);
         app.displayMenu();
 
         // !check if the number entered by the user is an integer
