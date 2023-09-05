@@ -6,8 +6,11 @@ import java.util.ArrayList;
 public class ClassesDemo {
   public static void main(String[] args) {
     ClassesDemo app = new ClassesDemo();
-    List<Intern> internsList = app.createInterns();
-    app.displayInterns(internsList);
+    // List<Intern> internsList = app.createInterns();
+    // app.displayInterns(internsList);
+
+    List<Car> cars = app.createCars();
+    app.displayCars(cars);
 
   }
 
@@ -38,6 +41,40 @@ public class ClassesDemo {
       intern.attendClass();
       intern.doAssignment();
     }
+  }
+
+  public List<Car> createCars() {
+    List<Car> carsList = new ArrayList<>();
+    Car tx = new Car("Tx", "KAC543H", 80);
+    carsList.add(tx);
+    Car audi = new Car("Audi", "KBC543H", 70);
+    carsList.add(audi);
+    Car ford = new Car("Ford", "KBYY00Y", 50);
+    carsList.add(ford);
+    Car chevrolet = new Car("Chevrolet", "KCA127U", 90);
+    carsList.add(chevrolet);
+    Car bmw = new Car("BMW", "KAC543H", 78);
+    carsList.add(bmw);
+    Car subaru = new Car("Subaru", "KAC543H", 100);
+    carsList.add(subaru);
+    Car toyota = new Car("Toyota", "KAC543H", 40);
+    carsList.add(toyota);
+    Car nissan = new Car("Nissan", "KAC543H", 70);
+    carsList.add(nissan);
+    Car honda = new Car("Honda", "KAC543H", 100);
+    carsList.add(honda);
+
+    return carsList;
+  }
+
+  public void displayCars(List<Car> listOfCars) {
+    for (Car car : listOfCars) {
+      System.out.println("Name:" + car.getName());
+      System.out.println("Name:" + car.getCarNumber());
+      System.out.println("Speed:" + car.getSpeed());
+      System.out.println("------------------------------");
+    }
+
   }
 
 }
