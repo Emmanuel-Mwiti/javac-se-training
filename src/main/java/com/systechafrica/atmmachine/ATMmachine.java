@@ -2,7 +2,7 @@ package com.systechafrica.atmmachine;
 
 import java.util.Scanner;
 
-public class ATMmachine {
+public class ATMMachine {
 
   private final String DEFAULT_PASSWORD = "Admin123";
   private final double INITIAL_AMOUNT = 1000.00;
@@ -14,7 +14,7 @@ public class ATMmachine {
   Scanner scanner = new Scanner(System.in);
 
   public static void main(String[] args) throws InterruptedException {
-    ATMmachine app = new ATMmachine();
+    ATMMachine app = new ATMMachine();
     boolean loggedIn = app.login();
     if (loggedIn) {
       System.out.println("Successiful login");
