@@ -51,6 +51,8 @@ public class POSManagementSystem {
           case 3:
             app.displayReceipt();
             break;
+          case 4:
+            keepShowing = false;
 
         }
       }
@@ -88,6 +90,7 @@ public class POSManagementSystem {
     System.out.println("1. ADD ITEM");
     System.out.println("2. MAKE PAYMENT");
     System.out.println("3. DISPAY RECEIPT");
+    System.out.println("4. QUIT");
 
   }
 
@@ -120,7 +123,7 @@ public class POSManagementSystem {
     scanner.nextLine();
     double change = amountPaid - total;
     System.out.print("Change\t\t" + change);
-    System.out.println("\t\t\t____");
+    // System.out.println("\t\t\t____");
     System.out.println("******************************");
     System.out.println("THANKYOU FOR SHOPPING WITH US");
     System.out.println("******************************");
