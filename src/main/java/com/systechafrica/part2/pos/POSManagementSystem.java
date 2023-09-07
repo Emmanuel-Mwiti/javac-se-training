@@ -8,10 +8,12 @@ public class POSManagementSystem {
 
   private final String LOGIN_PASSWORD = "Admin123";
   Scanner scanner = new Scanner(System.in);
+  private List<Item> itemsList = new ArrayList<>();
 
   public static void main(String[] args) throws InterruptedException {
 
     POSManagementSystem app = new POSManagementSystem();
+
     boolean loggedIn = app.login();
 
     if (loggedIn) {
@@ -42,6 +44,9 @@ public class POSManagementSystem {
             }
             break;
           case 2:
+            app.displayItemListMenu();
+            break;
+          case 3:
 
         }
       }
@@ -83,11 +88,39 @@ public class POSManagementSystem {
   }
 
   public void displayItemListMenu() {
+    System.out.print("Item code\t");
+    System.out.print("Quantity\t");
+    System.out.print("Unit Price\t");
+    System.out.println("Total Value\t");
 
+    if (itemsList.isEmpty()) {
+      System.out.println("No items have been choosen");
+      return;
+    }
+
+    double total = 0.0;
+
+    for (Item item : itemsList) {
+      System.out.print(item.getItemCode() + "\t\t");
+      System.out.print(item.getIQuantity() + "\t\t");
+      System.out.print(item.getUnitPrice() + "\t\t");
+      System.out.print(item.getTotalAmount() + "\t\t");
+      System.out.println();
+      total += item.getTotalAmount();
+    }
+    System.out.println("******************************");
+    System.out.println("Total-\t\t" + total);
+    System.out.println("******************************");
+    System.out.print("Enter the amount given by the user ");
+    double amountPaid = scanner.nextDouble();
+    scanner.nextLine();
+    double change = amountPaid - total;
+    System.out.print("Change\t\t" + change);
+    System.out.println("\t\t\t____");
   }
 
   public List<Item> addItem() {
-    List<Item> items = new ArrayList<>();
+    // List<Item> items = new ArrayList<>();
     System.out.print("Enter item code ");
     String itemCode = scanner.nextLine();
     System.out.print("Enter the quantity you want ");
@@ -98,9 +131,9 @@ public class POSManagementSystem {
     scanner.nextLine();
 
     Item itemEntered = new Item(itemCode, quantity, unitPrice);
-    items.add(itemEntered);
+    itemsList.add(itemEntered);
 
-    return items;
+    return itemsList;
 
   }
 
