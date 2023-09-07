@@ -1,8 +1,10 @@
 package com.systechafrica.part2.pos;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.util.Date;
 
 public class POSManagementSystem {
 
@@ -47,6 +49,8 @@ public class POSManagementSystem {
             app.displayItemListMenu();
             break;
           case 3:
+            app.displayReceipt();
+            break;
 
         }
       }
@@ -117,6 +121,9 @@ public class POSManagementSystem {
     double change = amountPaid - total;
     System.out.print("Change\t\t" + change);
     System.out.println("\t\t\t____");
+    System.out.println("******************************");
+    System.out.println("THANKYOU FOR SHOPPING WITH US");
+    System.out.println("******************************");
   }
 
   public List<Item> addItem() {
@@ -138,6 +145,39 @@ public class POSManagementSystem {
   }
 
   public void displayReceipt() {
+    if (itemsList.isEmpty()) {
+      System.out.println("No items have been added.");
+      return;
+    }
+    Date currentDate = new Date();
 
+    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    String formattedDate = dateFormat.format(currentDate);
+
+    System.out.println("******************************");
+    System.out.println("Receipt");
+    System.out.println("Date and Time: " + formattedDate);
+    System.out.println("******************************");
+
+    System.out.println("Item code\tQuantity\tUnit Price\tTotal Value");
+
+    double total = 0.0; // Initialize a variable to keep track of the total
+
+    for (Item item : itemsList) {
+      System.out.print(item.getItemCode() + "\t\t");
+      System.out.print(item.getIQuantity() + "\t\t");
+      System.out.print(item.getUnitPrice() + "\t\t");
+      System.out.print(item.getTotalAmount() + "\t\t");
+      System.out.println();
+
+      total += item.getTotalAmount();
+    }
+
+    System.out.println("******************************");
+    System.out.print("Total-\t\t");
+    System.out.println(total);
+    System.out.println("******************************");
+    System.out.println("THANKYOU AGAIN, BYE. WELCOME BACK");
+    System.out.println("******************************");
   }
 }
