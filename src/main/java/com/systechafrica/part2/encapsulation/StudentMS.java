@@ -24,11 +24,10 @@ public class StudentMS {
       String name = scanner.nextLine();
       Student s = new Student(studentId, regNo, name);
       students[i] = s;
-      System.out.println(students[i]);
 
     }
-    // System.out.println(students[0].toString());
-    // System.out.println(students[1].toString());
+    System.out.println(students[0].toString());
+    System.out.println(students[1].toString());
 
     scanner.close();
   }
