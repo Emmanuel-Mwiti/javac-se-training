@@ -4,11 +4,13 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+
+import com.systechafrica.constants.Constants;
+
 import java.util.Date;
 
 public class POSManagementSystem {
 
-  private final String LOGIN_PASSWORD = "Admin123";
   Scanner scanner = new Scanner(System.in);
   private List<Item> itemsList = new ArrayList<>();
 
@@ -70,7 +72,7 @@ public class POSManagementSystem {
       System.out.print("Enter your password: ");
       String password = scanner.nextLine();
 
-      if (password.equals(LOGIN_PASSWORD)) {
+      if (password.equals(Constants.DEFAULT_PASSWORD)) {
 
         loggedIn = true;
         break;
