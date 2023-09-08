@@ -24,10 +24,11 @@ public class POSManagementSystem {
       System.out.println("Successiful Login, Welcome...");
       boolean keepShowing = true;
       while (keepShowing) {
-        // display menu
+
         System.out.println("LOADING...");
         Thread.sleep(400);
 
+        // display menu
         app.displayMainMenu();
         System.out.print("\nchoose an option ");
         int optionChoosen = app.scanner.nextInt();
