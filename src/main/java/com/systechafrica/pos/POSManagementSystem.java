@@ -136,6 +136,7 @@ public class POSManagementSystem {
       System.out.println("THANKYOU FOR SHOPPING WITH US");
       System.out.println("******************************");
     }
+    scanner.close();
 
   }
 

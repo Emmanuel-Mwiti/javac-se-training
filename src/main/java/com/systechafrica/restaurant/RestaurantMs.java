@@ -181,6 +181,7 @@ public class RestaurantMs {
       System.out.println("Your balance is:---------------" + change);
       System.out.println("*******************************");
     }
+    scanner.close();
 
   }
 }
