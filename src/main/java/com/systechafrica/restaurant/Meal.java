@@ -1,4 +1,4 @@
-package com.systechafrica.part2.restaurant;
+package com.systechafrica.restaurant;
 
 public class Meal {
   private String name;

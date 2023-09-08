@@ -1,4 +1,4 @@
-package com.systechafrica.part2.restaurant;
+package com.systechafrica.restaurant;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -146,15 +146,39 @@ public class RestaurantMs {
 
   public void displayPaymentMenu() {
 
-    for (Drink drink : drinksList) {
-      System.out.print(drink.getName());
-      System.out.print(drink.getPrice());
+    double total = 0.0;
+    System.out.println("Pay Now For:");
 
-    }
-    for (Meal meal : mealsList) {
-      System.out.println(meal.getName());
-      System.out.println(meal.getPrice());
+    if (!drinksList.isEmpty()) {
+      for (Drink drink : drinksList) {
 
+        System.out.print(drink.getName() + "------------------" + drink.getPrice());
+        total += drink.getPrice();
+      }
+      System.out.println();
     }
+
+    if (!mealsList.isEmpty()) {
+      for (Meal meal : mealsList) {
+        System.out.print(meal.getName() + "------------------" + meal.getPrice());
+        total += meal.getPrice();
+      }
+      System.out.println();
+    }
+    System.out.println("*******************************");
+    System.out.println("Total------------------" + total);
+    System.out.println("*******************************");
+
+    System.out.print("Enter amount to pay: ");
+    double amountToPay = scanner.nextDouble();
+    scanner.nextLine();
+    if (amountToPay < total) {
+      System.err.println("Insufficient funds!");
+    } else {
+      double change = amountToPay - total;
+      System.out.println("Your balance is:---------------" + change);
+      System.out.println("*******************************");
+    }
+
   }
 }
