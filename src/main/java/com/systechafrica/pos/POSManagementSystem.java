@@ -128,12 +128,15 @@ public class POSManagementSystem {
     System.out.print("Enter the amount given by the user ");
     double amountPaid = scanner.nextDouble();
     scanner.nextLine();
-    double change = amountPaid - total;
-    System.out.print("Change\t\t" + change);
-    // System.out.println("\t\t\t____");
-    System.out.println("******************************");
-    System.out.println("THANKYOU FOR SHOPPING WITH US");
-    System.out.println("******************************");
+    if (ValidateInput.validateAmountPaidIsGreaterThanBilled(total, amountPaid)) {
+      double change = amountPaid - total;
+      System.out.print("Change\t\t" + change);
+      // System.out.println("\t\t\t____");
+      System.out.println("******************************");
+      System.out.println("THANKYOU FOR SHOPPING WITH US");
+      System.out.println("******************************");
+    }
+
   }
 
   public void addItem() {

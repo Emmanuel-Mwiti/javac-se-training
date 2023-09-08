@@ -176,9 +176,7 @@ public class RestaurantMs {
     System.out.print("Enter amount to pay: ");
     double amountToPay = scanner.nextDouble();
     scanner.nextLine();
-    if (amountToPay < total) {
-      System.err.println("Insufficient funds!");
-    } else {
+    if (ValidateInput.validateAmountPaidIsGreaterThanBilled(total, amountToPay)) {
       double change = amountToPay - total;
       System.out.println("Your balance is:---------------" + change);
       System.out.println("*******************************");

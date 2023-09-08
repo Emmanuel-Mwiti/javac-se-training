@@ -10,4 +10,13 @@ public class ValidateInput {
     return false;
   }
 
+  public static final boolean validateAmountPaidIsGreaterThanBilled(double amountBilled, double amountPaid) {
+    if (amountBilled > amountPaid) {
+      System.out.println("Insufficient money paid!!");
+      return false;
+    } else {
+      return true;
+    }
+  }
+
 }
