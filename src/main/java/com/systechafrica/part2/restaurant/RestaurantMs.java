@@ -21,18 +21,25 @@ public class RestaurantMs {
       System.out.println("Successiful Login, Welcome to Systech restaurant MS");
       System.out.println("LOADING...");
       Thread.sleep(400);
-      app.displayMainMenu();
 
       // the second step of adding the elements to the arrayList of class Meal and
       // Drink
-      System.out.println("Enter your Meal/Drink option: ");
       boolean keepAdding = true;
       while (keepAdding) {
         app.displayMainMenu();
         System.out.print("Enter your Meal/Drink option: ");
         int optionSelected = app.scanner.nextInt();
         app.scanner.nextLine();
-        app.addMealOrDrinkSelected(optionSelected);
+
+        // Checking option to make sure between 1 and 6, if 7 quits. The add function
+        // handles options 1 to 6
+        if (optionSelected == 7) {
+          return;
+        } else if (optionSelected >= 1 && optionSelected <= 6) {
+          app.addMealOrDrinkSelected(optionSelected);
+        } else {
+          System.out.println("Please select a valid option (1-7).");
+        }
 
         System.out.print("Do you want to enter another Meal/Drink option? ");
         String enterAnotherMealOrDrink = app.scanner.nextLine();
@@ -41,16 +48,22 @@ public class RestaurantMs {
         }
 
       }
-      System.out.print("Proceed to payment: ");
-      String proceedToPayment=app.scanner.nextLine();
-      if(proceedToPayment.equalsIgnoreCase("y")){
-        app.displayPaymentMenu();
-      }
-      else{
-        System.exit(0);
+
+      // proceed to payment when no more items needed
+      if (!app.mealsList.isEmpty() || !app.drinksList.isEmpty()) {
+        System.out.print("Proceed to payment: ");
+        String proceedToPayment = app.scanner.nextLine();
+        if (proceedToPayment.equalsIgnoreCase("Y")) {
+          app.displayPaymentMenu();
+        } else {
+          System.out.println("Payment process aborted.");
+        }
+      } else {
+        System.out.println("No items selected. Exiting.");
       }
 
-    } else {
+    } // ends the if LoggedIn condition
+    else {
       System.err.println("Maximum login attempts reached, please try again later");
     }
 
