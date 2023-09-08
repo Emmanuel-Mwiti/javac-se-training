@@ -19,4 +19,30 @@ public class ValidateInput {
     }
   }
 
+  public static final boolean isIntegerInRange1To3(int input) {
+    try {
+      if (input >= 1 && input <= 3) {
+        return true;
+      } else {
+        System.err.println("Input is an integer, but it must be between 1 and 3 for the three options above!.");
+      }
+    } catch (NumberFormatException e) {
+      System.out.println(e + "Input is not a valid integer.");
+    }
+    return false;
+  }
+
+  public static final boolean isIntegerInRange1To7(int input) {
+    try {
+      if (input >= 1 && input <= 7) {
+        return true;
+      } else {
+        System.err.println("Input is an integer, but it must be between 1 and 7 for the seven options above!.");
+      }
+    } catch (NumberFormatException e) {
+      System.out.println("Input is not a valid integer.");
+    }
+    return false;
+  }
+
 }

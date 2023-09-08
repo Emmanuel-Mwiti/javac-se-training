@@ -34,30 +34,31 @@ public class POSManagementSystem {
         System.out.print("\nchoose an option ");
         int optionChoosen = app.scanner.nextInt();
         app.scanner.nextLine();
-
-        switch (optionChoosen) {
-          case 1:
-            app.addItem();
-            boolean keepAdding = true;
-            while (keepAdding) {
-              System.out.println("Do you want to add another item? Type y or n");
-              String wantsToAddAnotherItem = app.scanner.nextLine();
-              if (wantsToAddAnotherItem.equals("y")) {
-                app.addItem();
-              } else {
-                keepAdding = false;
+        if (ValidateInput.isIntegerInRange1To3(optionChoosen)) {
+          switch (optionChoosen) {
+            case 1:
+              app.addItem();
+              boolean keepAdding = true;
+              while (keepAdding) {
+                System.out.println("Do you want to add another item? Type y or n");
+                String wantsToAddAnotherItem = app.scanner.nextLine();
+                if (wantsToAddAnotherItem.equals("y")) {
+                  app.addItem();
+                } else {
+                  keepAdding = false;
+                }
               }
-            }
-            break;
-          case 2:
-            app.displayItemListMenu();
-            break;
-          case 3:
-            app.displayReceipt();
-            break;
-          case 4:
-            keepShowing = false;
+              break;
+            case 2:
+              app.displayItemListMenu();
+              break;
+            case 3:
+              app.displayReceipt();
+              break;
+            case 4:
+              keepShowing = false;
 
+          }
         }
       }
 

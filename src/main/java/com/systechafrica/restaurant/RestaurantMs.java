@@ -31,21 +31,22 @@ public class RestaurantMs {
         System.out.print("Enter your Meal/Drink option: ");
         int optionSelected = app.scanner.nextInt();
         app.scanner.nextLine();
+        if (ValidateInput.isIntegerInRange1To7(optionSelected)) {
+          // Checking option to make sure between 1 and 6, if 7 quits. The add function
+          // handles options 1 to 6
+          if (optionSelected == 7) {
+            return;
+          } else if (optionSelected >= 1 && optionSelected <= 6) {
+            app.addMealOrDrinkSelected(optionSelected);
+          } else {
+            System.out.println("Please select a valid option (1-7).");
+          }
 
-        // Checking option to make sure between 1 and 6, if 7 quits. The add function
-        // handles options 1 to 6
-        if (optionSelected == 7) {
-          return;
-        } else if (optionSelected >= 1 && optionSelected <= 6) {
-          app.addMealOrDrinkSelected(optionSelected);
-        } else {
-          System.out.println("Please select a valid option (1-7).");
-        }
-
-        System.out.print("Do you want to enter another Meal/Drink option? ");
-        String enterAnotherMealOrDrink = app.scanner.nextLine();
-        if (!enterAnotherMealOrDrink.equalsIgnoreCase("Y")) {
-          keepAdding = false;
+          System.out.print("Do you want to enter another Meal/Drink option? ");
+          String enterAnotherMealOrDrink = app.scanner.nextLine();
+          if (!enterAnotherMealOrDrink.equalsIgnoreCase("Y")) {
+            keepAdding = false;
+          }
         }
 
       }
