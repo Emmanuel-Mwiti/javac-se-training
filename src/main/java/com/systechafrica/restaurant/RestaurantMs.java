@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.systechafrica.constants.Constants;
+import com.systechafrica.utils.ValidateInput;
 
 public class RestaurantMs {
 
@@ -76,15 +77,18 @@ public class RestaurantMs {
     while (loginEntries < 3) {
       System.out.print("Enter your password: ");
       String password = scanner.nextLine();
+      // we first verify password to contain something
+      if (ValidateInput.validate(password)) {
+        if (password.equals(Constants.DEFAULT_PASSWORD)) {
 
-      if (password.equals(Constants.DEFAULT_PASSWORD)) {
-
-        loggedIn = true;
-        break;
-      } else {
-        System.out.println("Wrong password!");
-        loginEntries++;
+          loggedIn = true;
+          break;
+        } else {
+          System.out.println("Wrong password!");
+          loginEntries++;
+        }
       }
+
     }
     return loggedIn;
 

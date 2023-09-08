@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.systechafrica.constants.Constants;
+import com.systechafrica.utils.ValidateInput;
 
 import java.util.Date;
 
@@ -73,14 +74,17 @@ public class POSManagementSystem {
       System.out.print("Enter your password: ");
       String password = scanner.nextLine();
 
-      if (password.equals(Constants.DEFAULT_PASSWORD)) {
+      if (ValidateInput.validate(password)) {
+        if (password.equals(Constants.DEFAULT_PASSWORD)) {
 
-        loggedIn = true;
-        break;
-      } else {
-        System.out.println("Wrong passoword!");
-        loginEntries++;
+          loggedIn = true;
+          break;
+        } else {
+          System.out.println("Wrong passoword!");
+          loginEntries++;
+        }
       }
+
     }
     return loggedIn;
   }
