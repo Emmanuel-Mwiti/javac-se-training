@@ -132,7 +132,7 @@ public class POSManagementSystem {
     System.out.println("******************************");
   }
 
-  public List<Item> addItem() {
+  public void addItem() {
     // List<Item> items = new ArrayList<>();
     System.out.print("Enter item code ");
     String itemCode = scanner.nextLine();
@@ -145,8 +145,6 @@ public class POSManagementSystem {
 
     Item itemEntered = new Item(itemCode, quantity, unitPrice);
     itemsList.add(itemEntered);
-
-    return itemsList;
 
   }
 

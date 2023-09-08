@@ -1,5 +1,7 @@
 package com.systechafrica.part2.restaurant;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 import com.systechafrica.constants.Constants;
@@ -7,6 +9,8 @@ import com.systechafrica.constants.Constants;
 public class RestaurantMs {
 
   Scanner scanner = new Scanner(System.in);
+  private List<Drink> drinksList = new ArrayList<>();
+  private List<Meal> mealsList = new ArrayList<>();
 
   public static void main(String[] args) throws InterruptedException {
     RestaurantMs app = new RestaurantMs();
@@ -18,6 +22,34 @@ public class RestaurantMs {
       System.out.println("LOADING...");
       Thread.sleep(400);
       app.displayMainMenu();
+
+      // the second step of adding the elements to the arrayList of class Meal and
+      // Drink
+      System.out.println("Enter your Meal/Drink option: ");
+      boolean keepAdding = true;
+      while (keepAdding) {
+        app.displayMainMenu();
+        System.out.print("Enter your Meal/Drink option: ");
+        int optionSelected = app.scanner.nextInt();
+        app.scanner.nextLine();
+        app.addMealOrDrinkSelected(optionSelected);
+
+        System.out.print("Do you want to enter another Meal/Drink option? ");
+        String enterAnotherMealOrDrink = app.scanner.nextLine();
+        if (!enterAnotherMealOrDrink.equalsIgnoreCase("Y")) {
+          keepAdding = false;
+        }
+
+      }
+      System.out.print("Proceed to payment: ");
+      String proceedToPayment=app.scanner.nextLine();
+      if(proceedToPayment.equalsIgnoreCase("y")){
+        app.displayPaymentMenu();
+      }
+      else{
+        System.exit(0);
+      }
+
     } else {
       System.err.println("Maximum login attempts reached, please try again later");
     }
@@ -64,7 +96,52 @@ public class RestaurantMs {
     System.out.println("7. QUIT");
   }
 
+  public void addMealOrDrinkSelected(int option) {
+
+    if (option == 1 || option == 2 || option == 3) {
+      // here drinks option
+      // System.out.println("Welcome to the drinks");
+      switch (option) {
+        case 1:
+          drinksList.add(new Drink("Chai", 15));
+          break;
+        case 2:
+          drinksList.add(new Drink("Andazi", 10));
+          break;
+        case 3:
+          drinksList.add(new Drink("Tosti", 12));
+          break;
+      }
+    } else if (option == 4 || option == 5 || option == 6) {
+      // here meals option
+      // System.out.println("Welcome to the meals");
+      switch (option) {
+        case 4:
+          mealsList.add(new Meal("Ndengu And Accomplishments", 70));
+          break;
+        case 5:
+          mealsList.add(new Meal("Beans And Accomplishments", 70));
+          break;
+        case 6:
+          mealsList.add(new Meal("Pilau And Vegs", 90));
+          break;
+      }
+    } else {
+      System.out.println("Please select a valid option! Should be between 1 and 6");
+    }
+  }
+
   public void displayPaymentMenu() {
 
+    for (Drink drink : drinksList) {
+      System.out.print(drink.getName());
+      System.out.print(drink.getPrice());
+
+    }
+    for (Meal meal : mealsList) {
+      System.out.println(meal.getName());
+      System.out.println(meal.getPrice());
+
+    }
   }
 }
