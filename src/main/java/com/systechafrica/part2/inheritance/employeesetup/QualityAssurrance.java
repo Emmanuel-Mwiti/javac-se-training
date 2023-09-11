@@ -1,7 +1,13 @@
 package com.systechafrica.part2.inheritance.employeesetup;
 
 public class QualityAssurrance extends Employee {
+
   private String title;
+
+  public QualityAssurrance(String employeeNumber, String employeeName, String employeeAdress, String title) {
+    super(employeeNumber, employeeName, employeeAdress);
+    this.title = title;
+  }
 
   public String getTitle() {
     return title;

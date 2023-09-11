@@ -6,6 +6,12 @@ public class Employee {
   private String employeeName;
   private String employeeAdress;
 
+  public Employee(String employeeNumber, String employeeName, String employeeAdress) {
+    this.employeeNumber = employeeNumber;
+    this.employeeName = employeeName;
+    this.employeeAdress = employeeAdress;
+  }
+
   public String getEmployeeNumber() {
     return employeeNumber;
   }

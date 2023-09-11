@@ -4,6 +4,11 @@ public class SoftwareEngineer extends Employee {
 
   private String title;
 
+  public SoftwareEngineer(String employeeNumber, String employeeName, String employeeAdress, String title) {
+    super(employeeNumber, employeeName, employeeAdress);
+    this.title = title;
+  }
+
   public String getTitle() {
     return title;
   }
