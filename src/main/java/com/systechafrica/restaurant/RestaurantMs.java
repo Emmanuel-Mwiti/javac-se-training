@@ -122,6 +122,10 @@ public class RestaurantMs {
       switch (option) {
         case 1:
           drinksList.add(new Drink("Chai", 15));
+
+          // This is its equivalent
+          // Drink chai=new Drink("Chai",15);
+          // drinksList.add(chai);
           break;
         case 2:
           drinksList.add(new Drink("Andazi", 10));

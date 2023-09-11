@@ -154,6 +154,7 @@ public class POSManagementSystem {
 
     Item itemEntered = new Item(itemCode, quantity, unitPrice);
     itemsList.add(itemEntered);
+    // itemsList.add(new Item(itemCode, quantity, unitPrice));
 
   }
 
