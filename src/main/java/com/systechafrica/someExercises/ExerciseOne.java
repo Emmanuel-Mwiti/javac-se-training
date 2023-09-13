@@ -5,7 +5,20 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 
 class Product {
-  double price;
+  // double price;
+  int ns;
+  static int s;
+
+  Product(int ns) {
+    if (s < ns) {
+      s = ns;
+      this.ns = ns;
+    }
+  }
+
+  void doPrint() {
+    System.out.println("ns= " + ns + "s= " + s);
+  }
 }
 
 // class X {
@@ -15,12 +28,48 @@ class Product {
 // }
 
 public class ExerciseOne {
-  public void updatePrice(Product product, double price) {
-    price = price * 2;
-    product.price = product.price + price;
-  }
+  // public void updatePrice(Product product, double price) {
+  // price = price * 2;
+  // product.price = product.price + price;
+  // }
 
   public static void main(String[] args) throws Exception {
+
+    StringBuilder sb1 = new StringBuilder("");
+    String one = "";
+    String two = sb1.toString();
+    System.out.println(one == two);
+
+    // StringBuilder sb1 = new StringBuilder("Duke");
+    // String str1 = sb1.toString();
+    // String str2 = "Duke";
+    // System.out.println(str1 == str2);
+
+    // LocalDate date1 = LocalDate.now();
+    // LocalDate date2 = LocalDate.of(2014, 6, 20);
+    // LocalDate date3 = LocalDate.parse("2014-06-20", DateTimeFormatter.ISO_DATE);
+    // System.out.println("date1" + date1);
+    // System.out.println("date2" + date2);
+    // System.out.println("date3" + date3);
+    // checkSum();
+
+    // Product ref1 = new Product(50);
+    // Product ref2 = new Product(125);
+    // Product ref3 = new Product(100);
+    // ref1.doPrint();
+    // ref2.doPrint();
+    // ref3.doPrint();
+
+    // String[] arr = { "A", "B", "C", "D" };
+    // for (int i = 0; i < arr.length; i++) {
+
+    // if (arr[i].equals("C")) {
+    // continue;
+    // }
+    // System.out.println(arr[i] + "");
+    // System.out.println("Work done");
+    // break;
+    // }
     // X xobj = new X();
     // xobj.printFileContent();
 
@@ -48,15 +97,15 @@ public class ExerciseOne {
     // LocalDate.parse("2014-05-04").format(DateTimeFormatter.ISO_DATE_TIME);
     // System.out.println(date); => Exception thrown
 
-    StringBuilder sb = new StringBuilder(5);
-    String s = "";
-    if (sb.equals(s)) {
-      System.out.println("Match 1");
-    } else if (sb.toString().equals(s.toString())) {
-      System.out.println("Match 2");
-    } else {
-      System.out.println("No Match");
-    }
+    // StringBuilder sb = new StringBuilder(5);
+    // String s = "";
+    // if (sb.equals(s)) {
+    // System.out.println("Match 1");
+    // } else if (sb.toString().equals(s.toString())) {
+    // System.out.println("Match 2");
+    // } else {
+    // System.out.println("No Match");
+    // }
     // try () {
 
     // } catch (Exception e) {
@@ -66,4 +115,12 @@ public class ExerciseOne {
     // }
 
   }
+
+  // public static void checkSum() {
+  // int i = 0;
+  // int j = 7;
+  // for (i = 0; i < j - 1; i = i + 2) {
+  // System.out.println(i + "");
+  // }
+  // }
 }
