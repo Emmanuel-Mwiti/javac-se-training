@@ -27,9 +27,7 @@ public class Calculator {
         System.out.println(calculator.sum(a, b, c, d, e));
         System.out.println(calculator.sum(a, b));
         System.out.println(calculator.sum(10, 5, 15, 20, 100, 45, 85));
-
-
-
+        scanner.close();
 
     }
 }
