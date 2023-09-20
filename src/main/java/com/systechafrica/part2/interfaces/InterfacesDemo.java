@@ -10,5 +10,6 @@ public class InterfacesDemo {
     System.out.println(sq.calculatePerimeter(5, 5));
     // Square.MY_NAME;
     System.out.println(sq.sum(2, 3));
+    // System.out.println(sq.MY_NAME);
   }
 }

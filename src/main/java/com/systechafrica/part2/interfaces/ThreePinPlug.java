@@ -8,4 +8,6 @@ public interface ThreePinPlug {
 
   boolean plugOut();
 
+  String NAME = "Emmanuel";
+
 }
