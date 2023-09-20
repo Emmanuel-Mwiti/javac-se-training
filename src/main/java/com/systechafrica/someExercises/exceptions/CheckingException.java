@@ -19,7 +19,7 @@ public class CheckingException {
     // CheckingException ex = new CheckingException();
     // int cardNo = 12344;
     // ex.checkCard(cardNo);
-    // // ex.helloThere();
+    // // // ex.helloThere();
     // try {
     // ex.helloThere();
     // ex.readCard(cardNo);
@@ -66,25 +66,25 @@ public class CheckingException {
     // System.out.println(arry1[i][j]);
     // }
     // }
-    String[][] chs = new String[2][];
-    chs[0] = new String[2];
-    chs[1] = new String[5];
-    int i = 97;
+    // String[][] chs = new String[2][];
+    // chs[0] = new String[2];
+    // chs[1] = new String[5];
+    // int i = 97;
 
-    for (int a = 0; a < chs.length; a++) {
-      for (int b = 0; b < chs.length; b++) {
-        chs[a][b] = "" + i;
-        i++;
-      }
-    }
-    for (String[] strings : chs) {
-      for (String strings2 : strings) {
-        System.out.print(strings2 + " ");
+    // for (int a = 0; a < chs.length; a++) {
+    // for (int b = 0; b < chs.length; b++) {
+    // chs[a][b] = "" + i;
+    // i++;
+    // }
+    // }
+    // for (String[] strings : chs) {
+    // for (String strings2 : strings) {
+    // System.out.print(strings2 + " ");
 
-      }
-      System.out.println();
+    // }
+    // System.out.println();
 
-    }
+    // }
   }
 
 }

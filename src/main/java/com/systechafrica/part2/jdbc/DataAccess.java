@@ -8,7 +8,7 @@ public interface DataAccess {
 
   ResultSet executeQuery(String query);
 
-  int executeUpdate();
+  int executeUpdate(String query);
 
   void close();
 
