@@ -16,10 +16,11 @@ public class CheckingException {
   }
 
   public static void main(String[] args) {
-    // CheckingException ex = new CheckingException();
+    CheckingException ex = new CheckingException();
     // int cardNo = 12344;
     // ex.checkCard(cardNo);
     // // // ex.helloThere();
+    // ex.helloThere();
     // try {
     // ex.helloThere();
     // ex.readCard(cardNo);
