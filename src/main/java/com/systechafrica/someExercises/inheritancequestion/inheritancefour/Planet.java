@@ -5,7 +5,7 @@ public abstract class Planet {
 
   }
 
-  protected abstract void rotate();
+  abstract void rotate();
 
 }
 

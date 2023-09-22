@@ -45,10 +45,24 @@ public class ExerciseOne {
   public static void main(String[] args) throws Exception {
     Product product = new Product();
 
-    System.out.println("Long " + product.long1);
-    System.out.println("int " + product.int1);
-    System.out.println("double " + product.double1);
-    System.out.println("char " + product.char1);
+    int b = 6;
+    String s;
+    // String c=(String)b;
+    String name = "Emmanuel";
+    System.out.println(name);
+
+    // int x = 10;
+    // int y = 25;
+    // int z = x + y;
+    // for (int i = 0; i < 10; i++) {
+    // continue;
+    // // System.out.println();
+    // }
+
+    // System.out.println("Long " + product.long1);
+    // System.out.println("int " + product.int1);
+    // System.out.println("double " + product.double1);
+    // System.out.println("char " + product.char1);
     // String[] strs = new String[2];
     // int idx = 0;
     // for (String s : strs) {

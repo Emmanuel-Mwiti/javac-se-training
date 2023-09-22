@@ -17,10 +17,12 @@ class Planet {
     // System.out.println(planets);
     // System.out.println(planets[2]);
     // System.out.println(planets[2].moons);
-    int var1 = 200;
-    System.out.println(doCalc(var1));
-    System.out.println(" " + var1);
+    // int var1 = 200;
+    // System.out.println(doCalc(var1));
+    // System.out.println(" " + var1);
 
+    int[] array1 = new int[3];
+    System.out.println(array1[1]);
   }
 
   static int doCalc(int var1) {
