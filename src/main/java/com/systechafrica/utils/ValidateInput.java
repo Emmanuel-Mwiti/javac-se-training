@@ -21,10 +21,10 @@ public class ValidateInput {
 
   public static final boolean isIntegerInRange1To3(int input) {
     try {
-      if (input >= 1 && input <= 3) {
+      if (input >= 1 && input <= 4) {
         return true;
       } else {
-        System.err.println("Input is an integer, but it must be between 1 and 3 for the three options above!.");
+        System.err.println("Input is an integer, but it must be between 1 and 4 for the three options above!.");
       }
     } catch (NumberFormatException e) {
       System.out.println(e + "Input is not a valid integer.");
