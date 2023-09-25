@@ -4,18 +4,20 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.FileHandler;
 
 import com.systechafrica.part3.pos.utils.LoggerUtil;
 
-public class DatabaseConnection {
+import io.github.cdimascio.dotenv.Dotenv;
 
+public class DatabaseConnection {
+  // Dotenv dotenv = Dotenv.load(); // Load environment variables from .env file
+
+  // String dbUrl = dotenv.get("DB_URL");
   private static final String JDBC_URL = "jdbc:mysql://localhost:3306/javase";
   private static final String USERNAME = "root";
   private static final String PASSWORD = "5168";
 
   private Connection connection;
-  FileHandler fileHandler;
 
   public DatabaseConnection() {
     try {
@@ -30,9 +32,9 @@ public class DatabaseConnection {
     } catch (ClassNotFoundException e) {
       LoggerUtil.logSevereMessage("Class not found ");
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("SQLException ");
+      LoggerUtil.logSevereMessage("SQLException. Could not connect to the DB. ");
     } catch (Exception e) {
-      LoggerUtil.logSevereMessage("An exception was thrown.  ");
+      LoggerUtil.logSevereMessage("An exception was thrown. Could not connect to the DB.  ");
     }
   }
 
@@ -66,7 +68,7 @@ public class DatabaseConnection {
         connection.close();
         LoggerUtil.logInfoMessage("Database connection closed.");
       } catch (SQLException e) {
-        LoggerUtil.logSevereMessage("SQLException ");
+        LoggerUtil.logSevereMessage("SQLException while closing the database connection...");
       }
     }
   }
