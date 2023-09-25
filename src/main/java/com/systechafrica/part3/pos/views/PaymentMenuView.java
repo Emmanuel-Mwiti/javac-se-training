@@ -1,15 +1,11 @@
 package com.systechafrica.part3.pos.views;
 
-import com.systechafrica.part3.pos.models.Item;
-
 import java.util.List;
 
-public class ReceiptView {
+import com.systechafrica.part3.pos.models.Item;
 
-  public void displayReceipt(List<Item> items) {
-    System.out.println("******************************");
-    System.out.println("Receipt");
-    System.out.println("******************************");
+public class PaymentMenuView {
+  public static void displayPaymentMenu(List<Item> items) {
 
     System.out.println("Item code\tQuantity\tUnit Price\tTotal Value");
 
@@ -29,7 +25,6 @@ public class ReceiptView {
     System.out.print("Total=\t\t");
     System.out.println(total);
     System.out.println("******************************");
-    System.out.println("THANK YOU FOR SHOPPING WITH US");
-    System.out.println("******************************");
   }
+
 }

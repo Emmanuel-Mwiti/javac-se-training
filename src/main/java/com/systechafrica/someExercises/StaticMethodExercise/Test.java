@@ -12,6 +12,20 @@ public class Test {
   }
 
   public static void main(String[] args) {
+    String str1 = "Hello";
+    StringBuilder str2 = new StringBuilder("Hello");
+    boolean areEqual = str1.equals(str2); // false (compares references)
+    // boolean areSameReference = str1 == str2; // false (compares references)
+    Integer a = 10;
+    int c = 10;
+    String b = "Hello";
+    if (a.equals(b)) {
+
+    }
+    if (a == c) {
+      System.out.println(b);
+
+    }
     // Test check1 = new Test();
     // Test check2 = new Test();
     // check1.changeCount();

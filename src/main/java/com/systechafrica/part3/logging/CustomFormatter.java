@@ -17,7 +17,7 @@ public class CustomFormatter extends Formatter {
     Instant instant = record.getInstant();// ! The timestamp when the log message was generated
     LocalDateTime now = LocalDateTime.ofInstant(instant, ZoneId.systemDefault());
 
-    return pattern.format(now)  + " | " + method + " | " + level + " | " + message;
+    return pattern.format(now) + " | " + method + " | " + level + " | " + message + "\n";
   }
 
 }

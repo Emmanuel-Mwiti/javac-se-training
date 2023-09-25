@@ -2,6 +2,7 @@ package com.systechafrica.part3.pos.controllers;
 
 import com.systechafrica.part3.pos.models.DatabaseConnection;
 import com.systechafrica.part3.pos.models.Item;
+import com.systechafrica.part3.pos.utils.LoggerUtil;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -31,9 +32,10 @@ public class ItemController {
       preparedStatement.setDouble(3, item.getUnitPrice());
 
       int rowsAffected = preparedStatement.executeUpdate();
+      LoggerUtil.logInfoMessage("Added to items table. Rows affected= " + rowsAffected);
       return rowsAffected > 0; // ? returns true if rows are bigger than 0
     } catch (SQLException e) {
-      e.printStackTrace();
+      LoggerUtil.logSevereMessage("An SQL exception thrown. ");
       return false;
     }
   }
@@ -44,6 +46,7 @@ public class ItemController {
     Connection connection = databaseConnection.getConnection();
     String selectItemsQuery = "SELECT * FROM items";
     try (PreparedStatement preparedStatement = connection.prepareStatement(selectItemsQuery)) {
+
       ResultSet resultSet = preparedStatement.executeQuery();
       while (resultSet.next()) {
         String itemCode = resultSet.getString("itemCode");
@@ -52,9 +55,10 @@ public class ItemController {
 
         Item item = new Item(itemCode, quantity, unitPrice);
         itemList.add(item);
+        LoggerUtil.logInfoMessage("Select from items table ");
       }
     } catch (SQLException e) {
-      System.out.println();
+      LoggerUtil.logSevereMessage("SQL Exception while selecting items.");
     }
     return itemList;
   }

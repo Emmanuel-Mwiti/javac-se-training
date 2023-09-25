@@ -5,23 +5,27 @@ import java.util.Scanner;
 
 import com.systechafrica.part3.pos.models.Item;
 import com.systechafrica.part3.pos.views.MainView;
+import com.systechafrica.part3.pos.views.PaymentMenuView;
 import com.systechafrica.part3.pos.views.ReceiptView;
 import com.systechafrica.utils.ValidateInput;
 
 public class MainController {
-  Scanner scanner = new Scanner(System.in);
 
+  private Scanner scanner;
   private LoginController loginController;
   private ItemController itemController;
   private MainView mainView;
+  private PaymentMenuView paymentMenuView;
   private ReceiptView receiptView;
 
   public MainController(LoginController loginController, ItemController itemController, MainView mainView,
-      ReceiptView receiptView) {
+      ReceiptView receiptView, Scanner scanner, PaymentMenuView paymentMenuView) {
     this.loginController = loginController;
     this.itemController = itemController;
     this.mainView = mainView;
     this.receiptView = receiptView;
+    this.scanner = scanner;
+    this.paymentMenuView = paymentMenuView;
   }
 
   public void startApplication() {
@@ -45,8 +49,12 @@ public class MainController {
               makePayment();
               break;
             case 3:
-              List<Item> items = itemController.getItemsFromDatabase();
-              receiptView.displayReceipt(items);
+              List<Item> ReceiptItems = itemController.getItemsFromDatabase();
+              if (ReceiptItems.isEmpty()) {
+                System.out.println("No items available...");
+              } else
+                receiptView.displayReceipt(ReceiptItems);
+
               break;
             case 4:
               keepShowing = false;
@@ -103,7 +111,6 @@ public class MainController {
           keepAdding = false;
         }
       } catch (IllegalArgumentException e) {
-
       }
 
     }
@@ -120,6 +127,7 @@ public class MainController {
 
   public double makePayment() {
     List<Item> items1 = itemController.getItemsFromDatabase();
+    PaymentMenuView.displayPaymentMenu(items1);
     double amountPaid = mainView.getAmountPaidFromUser();
     double totalAmount = calculateTotalAmount(items1);
     if (!ValidateInput.validateAmountPaidIsGreaterThanBilled(totalAmount, amountPaid)) {

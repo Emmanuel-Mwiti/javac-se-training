@@ -24,7 +24,7 @@ public class ValidateInput {
       if (input >= 1 && input <= 4) {
         return true;
       } else {
-        System.err.println("Input is an integer, but it must be between 1 and 4 for the three options above!.");
+        System.err.println("Input is an integer, but it must be between 1 and 4 for the four options above!.");
       }
     } catch (NumberFormatException e) {
       System.out.println(e + "Input is not a valid integer.");
