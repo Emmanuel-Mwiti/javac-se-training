@@ -17,6 +17,17 @@ public class CheckingException {
 
   public static void main(String[] args) {
     CheckingException ex = new CheckingException();
+    String a = "abcd";
+    String b = "abcd123";
+    String c = a + "123";
+    System.out.println(b == c);
+    // final Integer i = 7;
+    // String name = "manu";
+    // String sum = i + name;
+    // System.out.println(sum);
+    // // ex.checkCard(101);
+    // ex.checkCard(10);
+
     // int cardNo = 12344;
     // ex.checkCard(cardNo);
     // // // ex.helloThere();
@@ -57,7 +68,7 @@ public class CheckingException {
     // int d = (a < b) ? (a < c) ? a : c : (b < c) ? b : c;
     // System.out.println(d);
 
-    // int arry1[][] = new int[3][2];
+    // int arry1[][] = new int[3][3];
     // arry1[0][0] = 1;
     // arry1[0][1] = 2;
     // arry1[1][0] = 3;
