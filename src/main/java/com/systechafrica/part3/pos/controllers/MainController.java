@@ -17,6 +17,7 @@ public class MainController {
   private MainView mainView;
   private PaymentMenuView paymentMenuView;
   private ReceiptView receiptView;
+  private double balance;
 
   public MainController(LoginController loginController, ItemController itemController, MainView mainView,
       ReceiptView receiptView, Scanner scanner, PaymentMenuView paymentMenuView) {
@@ -53,7 +54,7 @@ public class MainController {
               if (ReceiptItems.isEmpty()) {
                 System.out.println("No items available...");
               } else
-                receiptView.displayReceipt(ReceiptItems);
+                receiptView.displayReceipt(ReceiptItems, balance);
 
               break;
             case 4:
@@ -126,17 +127,18 @@ public class MainController {
   }
 
   public double makePayment() {
-    List<Item> items1 = itemController.getItemsFromDatabase();
-    PaymentMenuView.displayPaymentMenu(items1);
+    List<Item> items = itemController.getItemsFromDatabase();
+    PaymentMenuView.displayPaymentMenu(items);
     double amountPaid = mainView.getAmountPaidFromUser();
-    double totalAmount = calculateTotalAmount(items1);
+    double totalAmount = calculateTotalAmount(items);
     if (!ValidateInput.validateAmountPaidIsGreaterThanBilled(totalAmount, amountPaid)) {
       return 0;
     } else {
-      double balance = amountPaid - totalAmount;
+      balance = amountPaid - totalAmount;
       System.out.println("User's balance is: " + balance);
       return balance;
     }
+
   }
 
 }

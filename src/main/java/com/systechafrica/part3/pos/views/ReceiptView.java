@@ -6,7 +6,11 @@ import com.systechafrica.part3.pos.models.Item;
 
 public class ReceiptView {
 
-  public void displayReceipt(List<Item> items) {
+  public ReceiptView() {
+
+  }
+
+  public void displayReceipt(List<Item> items, double balance) {
     System.out.println("******************************");
     System.out.println("Receipt");
     System.out.println("******************************");
@@ -28,6 +32,10 @@ public class ReceiptView {
     System.out.println("******************************");
     System.out.print("Total=\t\t");
     System.out.println(total);
+    System.out.println("******************************");
+    System.out.println("******************************");
+    System.out.print("Balance=\t\t");
+    System.out.println(balance);
     System.out.println("******************************");
     System.out.println("THANK YOU FOR SHOPPING WITH US");
     System.out.println("******************************");
