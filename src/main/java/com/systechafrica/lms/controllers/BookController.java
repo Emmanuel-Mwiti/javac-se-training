@@ -11,11 +11,11 @@ import com.systechafrica.lms.databasedao.DatabaseConnection;
 import com.systechafrica.lms.models.Book;
 import com.systechafrica.lms.utils.LoggerUtil;
 
-public class BooksController {
+public class BookController {
 
   DatabaseConnection databaseConnection;
 
-  public BooksController(DatabaseConnection databaseConnection) {
+  public BookController(DatabaseConnection databaseConnection) {
     this.databaseConnection = databaseConnection;
   }
 

@@ -2,7 +2,7 @@ package com.systechafrica.lms;
 
 import java.util.Scanner;
 
-import com.systechafrica.lms.controllers.BooksController;
+import com.systechafrica.lms.controllers.BookController;
 import com.systechafrica.lms.controllers.LoginController;
 import com.systechafrica.lms.controllers.MainController;
 import com.systechafrica.lms.databasedao.DatabaseConnection;
@@ -17,7 +17,7 @@ public class LibraryMS {
     DatabaseConnection databaseConnection = new DatabaseConnection();
     LibraryDatabaseImp libraryDatabaseImp = new LibraryDatabaseImp(databaseConnection);
     BookDetailsView bookDetailsView = new BookDetailsView(scanner, libraryDatabaseImp);
-    BooksController booksController = new BooksController(databaseConnection);
+    BookController booksController = new BookController(databaseConnection);
     BookBorrowedView bookBorrowedView = new BookBorrowedView(booksController);
     MainController mainController = new MainController(loginController, scanner, bookDetailsView, bookBorrowedView);
 

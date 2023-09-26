@@ -2,14 +2,14 @@ package com.systechafrica.lms.views;
 
 import java.util.List;
 
-import com.systechafrica.lms.controllers.BooksController;
+import com.systechafrica.lms.controllers.BookController;
 import com.systechafrica.lms.models.Book;
 
 public class BookBorrowedView {
 
-  BooksController booksController;
+  BookController booksController;
 
-  public BookBorrowedView(BooksController booksController) {
+  public BookBorrowedView(BookController booksController) {
     this.booksController = booksController;
   }
 
