@@ -1,21 +1,16 @@
-package com.systechafrica.part3.pos.models;
+package com.systechafrica.lms.databasedao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import com.systechafrica.part3.pos.utils.LoggerUtil;
 
 public class DatabaseConnection {
-  // Dotenv dotenv = Dotenv.load(); // Load environment variables from .env file
-
-  // String dbUrl = dotenv.get("DB_URL");
-  private static final String JDBC_URL = "jdbc:mysql://localhost:3306/javase";
+  private Connection connection;
+  private static final String JDBC_URL = "jdbc:mysql://localhost:3306/library";
   private static final String USERNAME = "root";
   private static final String PASSWORD = "5168";
-
-  private Connection connection;
 
   public DatabaseConnection() {
     try {
@@ -33,26 +28,6 @@ public class DatabaseConnection {
       LoggerUtil.logSevereMessage("SQLException. Could not connect to the DB. ");
     } catch (Exception e) {
       LoggerUtil.logSevereMessage("An exception was thrown. Could not connect to the DB.  ");
-    }
-  }
-
-  public void createItemsTableIfNotExists() {
-    try {
-      Statement statement = connection.createStatement();
-
-      // SQL statement to create the table if it doesn't exist
-      String createTableSQL = "CREATE TABLE IF NOT EXISTS items ("
-          + "id INT AUTO_INCREMENT PRIMARY KEY,"
-          + "itemCode VARCHAR(255) NOT NULL,"
-          + "quantity INT NOT NULL,"
-          + "unitPrice DOUBLE NOT NULL"
-          + ")";
-
-      statement.executeUpdate(createTableSQL);
-      LoggerUtil.logInfoMessage("Table 'items' created. ");
-      statement.close();
-    } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("SQLException ");
     }
   }
 
