@@ -1,4 +1,4 @@
-package com.systechafrica.part3.pos.utils;
+package com.systechafrica.pos.posreviewed.pos.utils;
 
 import java.io.IOException;
 import java.util.logging.FileHandler;

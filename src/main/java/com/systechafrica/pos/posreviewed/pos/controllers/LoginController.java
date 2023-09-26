@@ -1,4 +1,4 @@
-package com.systechafrica.part3.pos.controllers;
+package com.systechafrica.pos.posreviewed.pos.controllers;
 
 import com.systechafrica.constants.Constants;
 

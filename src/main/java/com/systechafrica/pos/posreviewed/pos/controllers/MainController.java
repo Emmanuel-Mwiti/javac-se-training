@@ -1,12 +1,12 @@
-package com.systechafrica.part3.pos.controllers;
+package com.systechafrica.pos.posreviewed.pos.controllers;
 
 import java.util.List;
 import java.util.Scanner;
 
-import com.systechafrica.part3.pos.models.Item;
-import com.systechafrica.part3.pos.views.MainView;
-import com.systechafrica.part3.pos.views.PaymentMenuView;
-import com.systechafrica.part3.pos.views.ReceiptView;
+import com.systechafrica.pos.posreviewed.pos.models.Item;
+import com.systechafrica.pos.posreviewed.pos.views.MainView;
+import com.systechafrica.pos.posreviewed.pos.views.PaymentMenuView;
+import com.systechafrica.pos.posreviewed.pos.views.ReceiptView;
 import com.systechafrica.utils.ValidateInput;
 
 public class MainController {

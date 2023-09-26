@@ -1,4 +1,4 @@
-package com.systechafrica.part3.pos.models;
+package com.systechafrica.pos.posreviewed.pos.models;
 
 public class Item {
   private String id;

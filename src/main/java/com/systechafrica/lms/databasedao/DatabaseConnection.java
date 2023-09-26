@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-import com.systechafrica.part3.pos.utils.LoggerUtil;
+import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 
 public class DatabaseConnection {
   private Connection connection;

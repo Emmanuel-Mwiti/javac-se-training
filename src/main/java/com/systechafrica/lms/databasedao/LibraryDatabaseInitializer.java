@@ -3,7 +3,7 @@ package com.systechafrica.lms.databasedao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 
-import com.systechafrica.part3.pos.utils.LoggerUtil;
+import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 
 public class LibraryDatabaseInitializer {
 

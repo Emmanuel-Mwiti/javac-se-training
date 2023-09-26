@@ -1,14 +1,14 @@
-package com.systechafrica.part3.pos;
+package com.systechafrica.pos.posreviewed.pos;
 
 import java.util.Scanner;
 
-import com.systechafrica.part3.pos.controllers.ItemController;
-import com.systechafrica.part3.pos.controllers.LoginController;
-import com.systechafrica.part3.pos.controllers.MainController;
-import com.systechafrica.part3.pos.models.DatabaseConnection;
-import com.systechafrica.part3.pos.views.MainView;
-import com.systechafrica.part3.pos.views.PaymentMenuView;
-import com.systechafrica.part3.pos.views.ReceiptView;
+import com.systechafrica.pos.posreviewed.pos.controllers.ItemController;
+import com.systechafrica.pos.posreviewed.pos.controllers.LoginController;
+import com.systechafrica.pos.posreviewed.pos.controllers.MainController;
+import com.systechafrica.pos.posreviewed.pos.models.DatabaseConnection;
+import com.systechafrica.pos.posreviewed.pos.views.MainView;
+import com.systechafrica.pos.posreviewed.pos.views.PaymentMenuView;
+import com.systechafrica.pos.posreviewed.pos.views.ReceiptView;
 
 public class PointsOfSaleApp {
 

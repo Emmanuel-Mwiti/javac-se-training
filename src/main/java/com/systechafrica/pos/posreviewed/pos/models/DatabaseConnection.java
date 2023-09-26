@@ -1,11 +1,11 @@
-package com.systechafrica.part3.pos.models;
+package com.systechafrica.pos.posreviewed.pos.models;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import com.systechafrica.part3.pos.utils.LoggerUtil;
+import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 
 public class DatabaseConnection {
   // Dotenv dotenv = Dotenv.load(); // Load environment variables from .env file

@@ -1,8 +1,8 @@
-package com.systechafrica.part3.pos.views;
+package com.systechafrica.pos.posreviewed.pos.views;
 
 import java.util.List;
 
-import com.systechafrica.part3.pos.models.Item;
+import com.systechafrica.pos.posreviewed.pos.models.Item;
 
 public class ReceiptView {
 

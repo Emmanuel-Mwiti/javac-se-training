@@ -1,9 +1,9 @@
-package com.systechafrica.part3.pos.views;
+package com.systechafrica.pos.posreviewed.pos.views;
 
 import java.util.Scanner;
 
-import com.systechafrica.part3.pos.exceptions.InvalidInputException;
-import com.systechafrica.part3.pos.models.Item;
+import com.systechafrica.pos.posreviewed.pos.exceptions.InvalidInputException;
+import com.systechafrica.pos.posreviewed.pos.models.Item;
 
 public class MainView {
   private Scanner scanner;

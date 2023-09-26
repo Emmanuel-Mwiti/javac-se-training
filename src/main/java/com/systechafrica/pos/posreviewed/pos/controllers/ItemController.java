@@ -1,8 +1,4 @@
-package com.systechafrica.part3.pos.controllers;
-
-import com.systechafrica.part3.pos.models.DatabaseConnection;
-import com.systechafrica.part3.pos.models.Item;
-import com.systechafrica.part3.pos.utils.LoggerUtil;
+package com.systechafrica.pos.posreviewed.pos.controllers;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -10,6 +6,10 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.systechafrica.pos.posreviewed.pos.models.DatabaseConnection;
+import com.systechafrica.pos.posreviewed.pos.models.Item;
+import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 
 public class ItemController {
 
