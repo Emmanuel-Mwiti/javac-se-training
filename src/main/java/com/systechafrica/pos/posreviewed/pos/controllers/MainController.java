@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.systechafrica.pos.posreviewed.pos.models.Item;
+import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 import com.systechafrica.pos.posreviewed.pos.views.MainView;
 import com.systechafrica.pos.posreviewed.pos.views.PaymentMenuView;
 import com.systechafrica.pos.posreviewed.pos.views.ReceiptView;
@@ -11,6 +12,7 @@ import com.systechafrica.utils.ValidateInput;
 
 public class MainController {
 
+  // injecting dependencies here to avoid tight coupling
   private Scanner scanner;
   private LoginController loginController;
   private ItemController itemController;
@@ -18,6 +20,7 @@ public class MainController {
   private PaymentMenuView paymentMenuView;
   private ReceiptView receiptView;
   private double balance;
+  boolean paymentMade;
 
   public MainController(LoginController loginController, ItemController itemController, MainView mainView,
       ReceiptView receiptView, Scanner scanner, PaymentMenuView paymentMenuView) {
@@ -48,14 +51,14 @@ public class MainController {
               break;
             case 2:
               makePayment();
+              paymentMade = true;
               break;
             case 3:
-              List<Item> ReceiptItems = itemController.getItemsFromDatabase();
-              if (ReceiptItems.isEmpty()) {
-                System.out.println("No items available...");
-              } else
-                receiptView.displayReceipt(ReceiptItems, balance);
-
+              if (paymentMade) {
+                displayReceipt();
+              } else {
+                System.out.println("Please pay First before printing the receipt!! ");
+              }
               break;
             case 4:
               keepShowing = false;
@@ -100,7 +103,7 @@ public class MainController {
     }
   }
 
-  public boolean keepAdding() {
+  public void keepAdding() {
     boolean keepAdding = true;
     while (keepAdding) {
       try {
@@ -112,10 +115,10 @@ public class MainController {
           keepAdding = false;
         }
       } catch (IllegalArgumentException e) {
+        LoggerUtil.logSevereMessage("Failed, a value that is not compatible to \"y\"! ");
       }
 
     }
-    return keepAdding;
   }
 
   private double calculateTotalAmount(List<Item> items) {
@@ -128,17 +131,31 @@ public class MainController {
 
   public double makePayment() {
     List<Item> items = itemController.getItemsFromDatabase();
-    PaymentMenuView.displayPaymentMenu(items);
-    double amountPaid = mainView.getAmountPaidFromUser();
-    double totalAmount = calculateTotalAmount(items);
-    if (!ValidateInput.validateAmountPaidIsGreaterThanBilled(totalAmount, amountPaid)) {
+    if (items.isEmpty()) {
+      System.out.println("Add items selected from the user first!..");
       return 0;
     } else {
-      balance = amountPaid - totalAmount;
-      System.out.println("User's balance is: " + balance);
-      return balance;
+      PaymentMenuView.displayPaymentMenu(items);
+      double amountPaid = mainView.getAmountPaidFromUser();
+      double totalAmount = calculateTotalAmount(items);
+      if (!ValidateInput.validateAmountPaidIsGreaterThanBilled(totalAmount, amountPaid)) {
+        return 0;
+      } else {
+        balance = amountPaid - totalAmount;
+        System.out.println("User's balance is: " + balance);
+        return balance;
+      }
     }
 
+  }
+
+  public void displayReceipt() {
+    List<Item> ReceiptItems = itemController.getItemsFromDatabase();
+    if (ReceiptItems.isEmpty()) {
+      System.out.println("No items available...");
+    } else
+      receiptView.displayReceipt(ReceiptItems, balance);
+    itemController.deleteItemsFromTheDatabase(ReceiptItems); // Clears the database once the user has paid for the items
   }
 
 }

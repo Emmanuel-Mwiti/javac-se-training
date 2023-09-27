@@ -1,7 +1,9 @@
 package com.systechafrica.pos.posreviewed.pos.controllers;
 
 import com.systechafrica.constants.Constants;
+import com.systechafrica.pos.posreviewed.pos.models.Item;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class LoginController {

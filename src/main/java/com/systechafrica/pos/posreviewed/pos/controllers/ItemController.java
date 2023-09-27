@@ -35,7 +35,7 @@ public class ItemController {
       LoggerUtil.logInfoMessage("Added to items table. Rows affected= " + rowsAffected);
       return rowsAffected > 0; // ? returns true if rows are bigger than 0
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("An SQL exception thrown. ");
+      LoggerUtil.logSevereMessage("An SQL exception thrown while adding items to the database. ");
       return false;
     }
   }
@@ -61,6 +61,17 @@ public class ItemController {
       LoggerUtil.logSevereMessage("SQL Exception while selecting items.");
     }
     return itemList;
+  }
+
+  public void deleteItemsFromTheDatabase(List<Item> receiptItems) {
+    Connection connection = databaseConnection.getConnection();
+    String deleteQuery = "delete from items";
+    try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
+      preparedStatement.executeUpdate(deleteQuery);
+      receiptItems.clear();
+    } catch (SQLException e) {
+      LoggerUtil.logSevereMessage("Failed to delete items!");
+    }
   }
 
 }

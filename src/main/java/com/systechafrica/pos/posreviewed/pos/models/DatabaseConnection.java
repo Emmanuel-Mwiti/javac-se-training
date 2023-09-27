@@ -52,7 +52,7 @@ public class DatabaseConnection {
       LoggerUtil.logInfoMessage("Table 'items' created. ");
       statement.close();
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("SQLException ");
+      LoggerUtil.logSevereMessage("SQLException while creating table items ");
     }
   }
 

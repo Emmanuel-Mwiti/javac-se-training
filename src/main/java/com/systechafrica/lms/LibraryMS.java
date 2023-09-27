@@ -11,6 +11,7 @@ import com.systechafrica.lms.views.BookBorrowedView;
 import com.systechafrica.lms.views.BookDetailsView;
 
 public class LibraryMS {
+
   public static void main(String[] args) {
     Scanner scanner = new Scanner(System.in);
     LoginController loginController = new LoginController(scanner);
