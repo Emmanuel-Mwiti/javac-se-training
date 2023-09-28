@@ -57,7 +57,6 @@ public class UserController {
       LoggerUtil.logSevereMessage("An SQL exception occurred while authenticating user.");
     }
 
-    // User not found or authentication failed
     return null;
   }
 }

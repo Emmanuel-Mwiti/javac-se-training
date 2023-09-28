@@ -1,6 +1,5 @@
 package com.systechafrica.pos.posreviewed.pos.controllers;
 
-import com.systechafrica.constants.Constants;
 import com.systechafrica.pos.posreviewed.pos.models.User;
 
 import java.util.Scanner;
