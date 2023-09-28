@@ -56,6 +56,21 @@ public class DatabaseConnection {
     }
   }
 
+  public void createUserTableIfNotExists() {
+    try {
+      Statement statement = connection.createStatement();
+
+      // SQL statement to create the table if it doesn't exist
+      String createTableSQL = "CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL);";
+
+      statement.executeUpdate(createTableSQL);
+      LoggerUtil.logInfoMessage("Table 'user' created. ");
+      statement.close();
+    } catch (SQLException e) {
+      LoggerUtil.logSevereMessage("SQLException while creating table user ");
+    }
+  }
+
   public Connection getConnection() {
     return connection;
   }
@@ -70,4 +85,5 @@ public class DatabaseConnection {
       }
     }
   }
+
 }

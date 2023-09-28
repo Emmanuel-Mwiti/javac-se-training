@@ -12,14 +12,16 @@ public class LoggerUtil {
   // Configure the logger with a file handler and custom formatter
   public static void configureLogger() {
     try {
-      FileHandler fileHandler = new FileHandler("log.txt");
+      FileHandler fileHandler = new FileHandler("posLog.txt");
 
       CustomFormatter formatter = new CustomFormatter();
       fileHandler.setFormatter(formatter);
 
       LOGGER.addHandler(fileHandler);
+      fileHandler.flush();
     } catch (IOException e) {
       LOGGER.severe("IOException thrown! ");
+      e.printStackTrace();
     }
   }
 
@@ -29,7 +31,7 @@ public class LoggerUtil {
   }
 
   public static void logSevereMessage(String message) {
-    LOGGER.severe(message);
+    LOGGER.info(message);
   }
 
 }

@@ -155,7 +155,7 @@ public class MainController {
       System.out.println("No items available...");
     } else
       receiptView.displayReceipt(ReceiptItems, balance);
-    itemController.deleteItemsFromTheDatabase(ReceiptItems); // Clears the database once the user has paid for the items
+    itemController.deleteItemsFromItems(ReceiptItems); // Clears the database once the user has printed the receipts
   }
 
 }

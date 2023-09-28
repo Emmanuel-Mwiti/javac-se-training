@@ -12,7 +12,6 @@ import com.systechafrica.pos.posreviewed.pos.models.Item;
 import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 
 public class ItemController {
-
   private DatabaseConnection databaseConnection;
 
   public ItemController(DatabaseConnection databaseConnection) {
@@ -20,6 +19,7 @@ public class ItemController {
   }
 
   public boolean addItem(Item item) {
+    LoggerUtil.configureLogger();
     Connection connection = databaseConnection.getConnection();
     databaseConnection.createItemsTableIfNotExists();
     String insertSQL = "INSERT INTO items (itemCode, quantity, unitPrice) VALUES (?, ?, ?)";
@@ -63,12 +63,13 @@ public class ItemController {
     return itemList;
   }
 
-  public void deleteItemsFromTheDatabase(List<Item> receiptItems) {
+  public void deleteItemsFromItems(List<Item> receiptItems) {
     Connection connection = databaseConnection.getConnection();
     String deleteQuery = "delete from items";
     try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
       preparedStatement.executeUpdate(deleteQuery);
       receiptItems.clear();
+      LoggerUtil.logInfoMessage("Items deleted from the database. ");
     } catch (SQLException e) {
       LoggerUtil.logSevereMessage("Failed to delete items!");
     }
