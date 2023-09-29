@@ -35,7 +35,7 @@ public class LoginController {
         System.out.println("Logged in successfully!");
         break;
       } else {
-        System.out.println("Wrong username or password! Please try Again...");
+        System.out.println("Wrong username or password! Please try Again. ");
 
         loginEntries++;
       }

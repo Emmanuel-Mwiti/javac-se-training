@@ -20,7 +20,7 @@ public class UserController {
   }
 
   public User authenticateUser(String username, String password) {
-    // LoggerUtil.configureLogger();
+    LoggerUtil.configureLogger(LOGGER);
     Connection connection = databaseConnection.getConnection();
     String selectSQL = "SELECT * FROM user WHERE username = ? AND password = ?";
 
