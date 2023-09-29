@@ -1,7 +1,7 @@
 package com.systechafrica.pos.posreviewed.pos.views;
 
-import java.util.IllegalFormatException;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.systechafrica.pos.posreviewed.pos.exceptions.InvalidInputException;
 import com.systechafrica.pos.posreviewed.pos.models.Item;
@@ -9,6 +9,7 @@ import com.systechafrica.pos.posreviewed.pos.models.User;
 import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 
 public class MainView {
+  private static final Logger LOGGER = Logger.getLogger(MainView.class.getName());
   private Scanner scanner;
 
   public MainView(Scanner scanner) {
@@ -16,27 +17,27 @@ public class MainView {
   }
 
   public Item getItemDetailsFromUser() {
-    LoggerUtil.configureLogger();
-    try {
-      System.out.print("Enter item code: ");
-      String itemCode = scanner.nextLine();
+    LoggerUtil.configureLogger(LOGGER);
+    while (true) {
+      try {
+        System.out.print("Enter item code: ");
+        String itemCode = scanner.nextLine();
 
-      System.out.print("Enter quantity: ");
-      int quantity = Integer.parseInt(scanner.nextLine());
-      validateQuantity(quantity);
+        System.out.print("Enter quantity: ");
+        int quantity = Integer.parseInt(scanner.nextLine());
+        validateQuantity(quantity);
 
-      System.out.print("Enter unit price: ");
-      double unitPrice = Double.parseDouble(scanner.nextLine());
-      validatePrice(unitPrice);
+        System.out.print("Enter unit price: ");
+        double unitPrice = Double.parseDouble(scanner.nextLine());
+        validatePrice(unitPrice);
 
-      LoggerUtil.logInfoMessage("Got items from the user");
-      return new Item(itemCode, quantity, unitPrice);
-    } catch (NumberFormatException e) {
-      LoggerUtil.logSevereMessage("invalid input. Please enter a valid number.");
-      return null;
-    } catch (InvalidInputException e) {
-      LoggerUtil.logSevereMessage("Invalid input Exception.");
-      return null;
+        LOGGER.info("Got items from the user");
+        return new Item(itemCode, quantity, unitPrice);
+      } catch (InvalidInputException e) {
+        LOGGER.info("Invalid input Exception.");
+      } catch (NumberFormatException e) {
+        LOGGER.severe("Invalid input. Please enter a valid number.");
+      }
     }
   }
 
@@ -53,7 +54,7 @@ public class MainView {
       return new User(userName, password);
     } catch (InvalidInputException e) {
       // e.printStackTrace();
-      LoggerUtil.logSevereMessage("Invalid username or password! ");
+      LOGGER.severe("Invalid username or password! ");
       return null;
     }
   }
@@ -64,18 +65,21 @@ public class MainView {
       return Double.parseDouble(scanner.nextLine());
     } catch (NumberFormatException e) {
       System.out.println("Invalid input. Please enter a valid number.");
-      return getAmountPaidFromUser(); // ? Give the user another chance to enter
+      return 0; // ? Give the user another chance to enter
     }
   }
 
   private void validateQuantity(int quantity) throws InvalidInputException {
     if (quantity <= 0) {
+      System.out.println("Quantity must be greater than zero.");
       throw new InvalidInputException("Quantity must be greater than zero.");
+
     }
   }
 
   private void validatePrice(double price) throws InvalidInputException {
     if (price <= 0.0) {
+      System.out.println("Price must be greater than zero.");
       throw new InvalidInputException("Price must be greater than zero.");
     }
   }

@@ -2,6 +2,7 @@ package com.systechafrica.pos.posreviewed.pos.controllers;
 
 import java.util.List;
 import java.util.Scanner;
+import java.util.logging.Logger;
 
 import com.systechafrica.pos.posreviewed.pos.models.Item;
 import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
@@ -11,6 +12,7 @@ import com.systechafrica.pos.posreviewed.pos.views.ReceiptView;
 import com.systechafrica.utils.ValidateInput;
 
 public class MainController {
+  private static final Logger LOGGER = Logger.getLogger(MainController.class.getName());
 
   // injecting dependencies here to avoid tight coupling
   private Scanner scanner;
@@ -33,6 +35,7 @@ public class MainController {
   }
 
   public void startApplication() {
+    LoggerUtil.configureLogger(LOGGER);
     boolean loggedIn = loginController.login();
 
     if (loggedIn) {
@@ -40,33 +43,29 @@ public class MainController {
       while (keepShowing) {
         displayWelcomeMessage();
         displayMainMenu();
-        System.out.print("\nchoose an option ");
-        int optionChoosen = scanner.nextInt();
-        scanner.nextLine();
-        if (ValidateInput.isIntegerInRange1To3(optionChoosen)) {
-          switch (optionChoosen) {
-            case 1:
-              addItem();
-              keepAdding();
-              break;
-            case 2:
-              makePayment();
-              paymentMade = true;
-              break;
-            case 3:
-              if (paymentMade) {
-                displayReceipt();
-              } else {
-                System.out.println("Please pay First before printing the receipt!! ");
-              }
-              break;
-            case 4:
-              keepShowing = false;
-              break;
-            default:
-              System.out.println("Please select a valid option");
-              break;
-          }
+        int optionChoosen = validateUserOptionIfInteger();
+        switch (optionChoosen) {
+          case 1:
+            addItem();
+            keepAdding();
+            break;
+          case 2:
+            makePayment();
+            paymentMade = true;
+            break;
+          case 3:
+            if (paymentMade) {
+              displayReceipt();
+            } else {
+              System.out.println("Please pay First before printing the receipt!! ");
+            }
+            break;
+          case 4:
+            keepShowing = false;
+            break;
+          default:
+            System.out.println("Please select a valid option");
+            break;
         }
       }
     } else {
@@ -74,7 +73,7 @@ public class MainController {
     }
   }
 
-  public void displayWelcomeMessage() {
+  private void displayWelcomeMessage() {
     System.out.println("Welcome to the SYSTECH Point of Sale System!");
   }
 
@@ -90,7 +89,7 @@ public class MainController {
 
   }
 
-  public void addItem() {
+  private void addItem() {
     Item newItem = mainView.getItemDetailsFromUser();
 
     // Add the item to the database using the ItemController
@@ -103,7 +102,7 @@ public class MainController {
     }
   }
 
-  public void keepAdding() {
+  private void keepAdding() {
     boolean keepAdding = true;
     while (keepAdding) {
       try {
@@ -115,7 +114,7 @@ public class MainController {
           keepAdding = false;
         }
       } catch (IllegalArgumentException e) {
-        LoggerUtil.logSevereMessage("Failed, a value that is not compatible to \"y\"! ");
+        LOGGER.severe("Failed, a value that is not compatible to \"y\"! ");
       }
 
     }
@@ -129,33 +128,50 @@ public class MainController {
     return totalAmount;
   }
 
-  public double makePayment() {
+  private void makePayment() {
     List<Item> items = itemController.getItemsFromDatabase();
     if (items.isEmpty()) {
       System.out.println("Add items selected from the user first!..");
-      return 0;
     } else {
       PaymentMenuView.displayPaymentMenu(items);
       double amountPaid = mainView.getAmountPaidFromUser();
       double totalAmount = calculateTotalAmount(items);
       if (!ValidateInput.validateAmountPaidIsGreaterThanBilled(totalAmount, amountPaid)) {
-        return 0;
+        makePayment();// Give the user another chance
       } else {
         balance = amountPaid - totalAmount;
         System.out.println("User's balance is: " + balance);
-        return balance;
       }
     }
 
   }
 
-  public void displayReceipt() {
+  private void displayReceipt() {
     List<Item> ReceiptItems = itemController.getItemsFromDatabase();
     if (ReceiptItems.isEmpty()) {
       System.out.println("No items available...");
     } else
       receiptView.displayReceipt(ReceiptItems, balance);
     itemController.deleteItemsFromItems(ReceiptItems); // Clears the database once the user has printed the receipts
+  }
+
+  private int validateUserOptionIfInteger() {
+    int optionChoosen;
+
+    while (true) {
+      System.out.print("\nChoose an option: ");
+      try {
+        optionChoosen = Integer.parseInt(scanner.nextLine());
+        if (ValidateInput.isIntegerInRange1To3(optionChoosen)) {
+          break; // Valid input, exit the loop
+        } else {
+          System.err.println("Invalid input. Please choose an option between 1 and 4.");
+        }
+      } catch (NumberFormatException e) {
+        System.err.println("Invalid input. Please enter a valid integer.");
+      }
+    }
+    return optionChoosen;
   }
 
 }

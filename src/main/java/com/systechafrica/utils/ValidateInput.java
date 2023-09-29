@@ -12,7 +12,7 @@ public class ValidateInput {
 
   public static final boolean validateAmountPaidIsGreaterThanBilled(double amountBilled, double amountPaid) {
     if (amountBilled > amountPaid) {
-      System.out.println("Insufficient money paid!!");
+      System.out.println("Insufficient money paid!! Your total billing is: " + amountBilled);
       return false;
     } else {
       return true;

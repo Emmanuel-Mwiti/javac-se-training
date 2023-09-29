@@ -6,12 +6,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Logger;
 
 import com.systechafrica.pos.posreviewed.pos.models.DatabaseConnection;
 import com.systechafrica.pos.posreviewed.pos.models.Item;
 import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 
 public class ItemController {
+
+  private static final Logger LOGGER = Logger.getLogger(ItemController.class.getName());
   private DatabaseConnection databaseConnection;
 
   public ItemController(DatabaseConnection databaseConnection) {
@@ -19,7 +22,7 @@ public class ItemController {
   }
 
   public boolean addItem(Item item) {
-    LoggerUtil.configureLogger();
+    LoggerUtil.configureLogger(LOGGER);
     Connection connection = databaseConnection.getConnection();
     databaseConnection.createItemsTableIfNotExists();
     String insertSQL = "INSERT INTO items (itemCode, quantity, unitPrice) VALUES (?, ?, ?)";
@@ -32,10 +35,10 @@ public class ItemController {
       preparedStatement.setDouble(3, item.getUnitPrice());
 
       int rowsAffected = preparedStatement.executeUpdate();
-      LoggerUtil.logInfoMessage("Added to items table. Rows affected= " + rowsAffected);
+      LOGGER.info("Added to items table. Rows affected= " + rowsAffected);
       return rowsAffected > 0; // ? returns true if rows are bigger than 0
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("An SQL exception thrown while adding items to the database. ");
+      LOGGER.severe("An SQL exception thrown while adding items to the database. ");
       return false;
     }
   }
@@ -55,10 +58,10 @@ public class ItemController {
 
         Item item = new Item(itemCode, quantity, unitPrice);
         itemList.add(item);
-        LoggerUtil.logInfoMessage("Select from items table ");
+        LOGGER.info("Select from items table ");
       }
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("SQL Exception while selecting items.");
+      LOGGER.severe("SQL Exception while selecting items.");
     }
     return itemList;
   }
@@ -69,9 +72,9 @@ public class ItemController {
     try (PreparedStatement preparedStatement = connection.prepareStatement(deleteQuery)) {
       preparedStatement.executeUpdate(deleteQuery);
       receiptItems.clear();
-      LoggerUtil.logInfoMessage("Items deleted from the database. ");
+      LOGGER.info("Items deleted from the database. ");
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("Failed to delete items!");
+      LOGGER.severe("Failed to delete items!");
     }
   }
 

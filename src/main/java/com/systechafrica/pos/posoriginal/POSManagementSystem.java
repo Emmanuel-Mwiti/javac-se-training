@@ -1,4 +1,4 @@
-package com.systechafrica.pos;
+package com.systechafrica.pos.posoriginal;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;

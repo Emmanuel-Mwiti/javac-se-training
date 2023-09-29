@@ -4,11 +4,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.logging.Logger;
 
+import com.systechafrica.pos.posreviewed.pos.controllers.UserController;
 import com.systechafrica.pos.posreviewed.pos.utils.LoggerUtil;
 
 public class DatabaseConnection {
-  // Dotenv dotenv = Dotenv.load(); // Load environment variables from .env file
+  private static final Logger LOGGER = Logger.getLogger(UserController.class.getName());
 
   // String dbUrl = dotenv.get("DB_URL");
   private static final String JDBC_URL = "jdbc:mysql://localhost:3306/javase";
@@ -18,6 +20,7 @@ public class DatabaseConnection {
   private Connection connection;
 
   public DatabaseConnection() {
+    LoggerUtil.configureLogger(LOGGER);
     try {
       // Load the MySQL JDBC driver
       Class.forName("com.mysql.cj.jdbc.Driver");
@@ -25,14 +28,13 @@ public class DatabaseConnection {
       // Establish a connection to the database
       connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD);
 
-      // LOGGER.info("Database connection successful.");
-      LoggerUtil.logInfoMessage("Connected to database. ");
+      LOGGER.info("Connected to database. ");
     } catch (ClassNotFoundException e) {
-      LoggerUtil.logSevereMessage("Class not found ");
+      LOGGER.severe("Class not found ");
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("SQLException. Could not connect to the DB. ");
+      LOGGER.severe("SQLException. Could not connect to the DB. ");
     } catch (Exception e) {
-      LoggerUtil.logSevereMessage("An exception was thrown. Could not connect to the DB.  ");
+      LOGGER.severe("An exception was thrown. Could not connect to the DB.  ");
     }
   }
 
@@ -49,10 +51,10 @@ public class DatabaseConnection {
           + ")";
 
       statement.executeUpdate(createTableSQL);
-      LoggerUtil.logInfoMessage("Table 'items' created. ");
+      LOGGER.info("Table 'items' created. ");
       statement.close();
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("SQLException while creating table items ");
+      LOGGER.severe("SQLException while creating table items ");
     }
   }
 
@@ -64,10 +66,10 @@ public class DatabaseConnection {
       String createTableSQL = "CREATE TABLE IF NOT EXISTS user (id INT AUTO_INCREMENT PRIMARY KEY, username VARCHAR(255) NOT NULL, password VARCHAR(255) NOT NULL);";
 
       statement.executeUpdate(createTableSQL);
-      LoggerUtil.logInfoMessage("Table 'user' created. ");
+      LOGGER.info("Table 'user' created. ");
       statement.close();
     } catch (SQLException e) {
-      LoggerUtil.logSevereMessage("SQLException while creating table user ");
+      LOGGER.severe("SQLException while creating table user ");
     }
   }
 
@@ -79,9 +81,9 @@ public class DatabaseConnection {
     if (connection != null) {
       try {
         connection.close();
-        LoggerUtil.logInfoMessage("Database connection closed.");
+        LOGGER.info("Database connection closed.");
       } catch (SQLException e) {
-        LoggerUtil.logSevereMessage("SQLException while closing the database connection...");
+        LOGGER.severe("SQLException while closing the database connection...");
       }
     }
   }

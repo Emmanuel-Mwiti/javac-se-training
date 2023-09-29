@@ -1,4 +1,4 @@
-package com.systechafrica.pos;
+package com.systechafrica.pos.posoriginal;
 
 public class Item {
   private String itemCode;
