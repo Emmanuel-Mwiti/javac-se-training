@@ -17,8 +17,8 @@ class Car extends Vehicle {
   int y;
 
   Car() {
-    // super();
-    this(20);
+    super();
+    // this(20);
 
   }
 

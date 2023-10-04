@@ -19,14 +19,14 @@ class DerivedB extends DerivedA {
   }
 
   public static void main(String[] args) {
-    // Base b1 = new DerivedB();
-    // Base b2 = new DerivedA();
-    // Base b3 = new DerivedB();
-    // b1 = (Base) b3;
-    // Base b4 = (DerivedA) b3;
-    // b1.test();
-    // b4.test();
-    System.out.println("5+2=" + 3 + 4);
-    System.out.println("5+2=" + (3 + 4));
+    Base b1 = new DerivedB();
+    Base b2 = new DerivedA();
+    Base b3 = new DerivedB();
+    b1 = (Base) b3;
+    Base b4 = (DerivedA) b3;
+    b1.test();
+    b4.test();
+    // System.out.println("5+2=" + 3 + 4);
+    // System.out.println("5+2=" + (3 + 4));
   }
 }

@@ -2,7 +2,9 @@ package com.systechafrica.lms.databasedao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 import com.systechafrica.lms.models.Book;
@@ -32,7 +34,7 @@ public class LibraryDatabaseImp implements LibraryDatabase {
       studentsBooksStatement.setString(3, book.getTitle());
       studentsBooksAffectedRows = studentsBooksStatement.executeUpdate();
     } catch (SQLException e) {
-      e.printStackTrace();
+      System.out.println("Could not be able to add the book!");
     }
 
     // Insert into books table
@@ -60,9 +62,26 @@ public class LibraryDatabaseImp implements LibraryDatabase {
   }
 
   @Override
-  public List<Book> getBorrowedBooks(Student student) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getBorrowedBooks'");
+  public List<Book> getBorrowedBooks() {
+    List<Book> booksList = new ArrayList<>();
+
+    Connection connection = databaseConnection.getConnection();
+    String selectBooksQuery = "SELECT * FROM books";
+    try (PreparedStatement preparedStatement = connection.prepareStatement(selectBooksQuery)) {
+
+      ResultSet resultSet = preparedStatement.executeQuery();
+      while (resultSet.next()) {
+        String isbnNumber = resultSet.getString("isbn");
+        String title = resultSet.getString("title");
+
+        Book book = new Book(isbnNumber, title);
+        booksList.add(book);
+        LoggerUtil.logInfoMessage("Select from books table ");
+      }
+    } catch (SQLException e) {
+      LoggerUtil.logSevereMessage("SQL Exception while selecting items.");
+    }
+    return booksList;
   }
 
 }

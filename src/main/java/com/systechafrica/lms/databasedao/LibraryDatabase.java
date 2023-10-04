@@ -10,5 +10,5 @@ public interface LibraryDatabase {
 
   boolean returnBook(Student student, Book book);
 
-  List<Book> getBorrowedBooks(Student student);
+  List<Book> getBorrowedBooks();
 }
