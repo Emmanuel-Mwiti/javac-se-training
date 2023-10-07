@@ -1,4 +1,4 @@
-package com.systechafrica.part4.utildate.funtionalprogramming;
+package com.systechafrica.part4.funtionalprogramming;
 
 import java.util.ArrayList;
 import java.util.List;
