@@ -14,7 +14,6 @@ public class ArrayEvenNumbers {
         .map(x -> x * x)
         .collect(Collectors.toList());
     System.out.println(evenAndSquared);
-
   }
 
   public static List<Integer> evenNumbers(List<Integer> numbers, Predicate<Integer> condition) {
