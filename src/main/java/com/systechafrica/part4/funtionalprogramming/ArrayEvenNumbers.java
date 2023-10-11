@@ -13,6 +13,7 @@ public class ArrayEvenNumbers {
         .filter(isEven)
         .map(x -> x * x)
         .collect(Collectors.toList());
+    // List<Integer> evenAndSquared = evenNumbers(numbers, isEven);
     System.out.println(evenAndSquared);
   }
 

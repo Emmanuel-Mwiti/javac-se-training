@@ -4,6 +4,8 @@ import static org.junit.jupiter.api.Assertions.assertAll;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
+import java.util.function.Supplier;
+
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -23,11 +25,12 @@ public class CalculatorTest {
     @Test
     @DisplayName("Test calculation using calculate method")
     public void sumTest() {
+        Supplier<String> messageSupplier = () -> "Expected result should be match";
         assertAll(
-                () -> assertEquals(11, calculator.calculator(5, 6), "Expected result should be match"),
-                () -> assertEquals(-4, calculator.calculator(-10, 6), "Expected result should be match"),
-                () -> assertEquals(-20, calculator.calculator(-10, -10), "Expected result should be match"),
-                () -> assertEquals(15, calculator.calculator(5, 5, 5), "Expected result should be match"));
+                () -> assertEquals(11, calculator.calculator(5, 6), messageSupplier),
+                () -> assertEquals(-4, calculator.calculator(-10, 6), messageSupplier),
+                () -> assertEquals(-20, calculator.calculator(-10, -10), messageSupplier),
+                () -> assertEquals(15, calculator.calculator(5, 5, 5), messageSupplier));
         // Expected result
         // Check the sum
 

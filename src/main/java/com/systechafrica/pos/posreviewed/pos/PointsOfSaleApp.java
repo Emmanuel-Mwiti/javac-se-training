@@ -13,7 +13,7 @@ import com.systechafrica.pos.posreviewed.pos.views.PaymentMenuView;
 import com.systechafrica.pos.posreviewed.pos.views.ReceiptView;
 
 public class PointsOfSaleApp {
-  // !To enable you to Login in please use Following credintials;
+  // !To enable you to Login in please use Following credentials;
   // !username= posadmin
   // !password=Admin123
 
