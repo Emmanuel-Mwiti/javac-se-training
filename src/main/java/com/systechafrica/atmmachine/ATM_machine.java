@@ -82,7 +82,7 @@ public class ATM_machine {
         loggedIn = true;
         break;
       } else {
-        System.out.println("Wrong passoword!");
+        System.out.println("Wrong password!");
         loginEntries++;
       }
     }
