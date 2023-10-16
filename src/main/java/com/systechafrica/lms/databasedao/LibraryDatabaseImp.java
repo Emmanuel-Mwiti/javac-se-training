@@ -74,8 +74,7 @@ public class LibraryDatabaseImp implements LibraryDatabase {
         String isbnNumber = resultSet.getString("isbn");
         String title = resultSet.getString("title");
 
-        Book book = new Book(isbnNumber, title);
-        booksList.add(book);
+        booksList.add(new Book(isbnNumber, title));
         LoggerUtil.logInfoMessage("Select from books table ");
       }
     } catch (SQLException e) {
